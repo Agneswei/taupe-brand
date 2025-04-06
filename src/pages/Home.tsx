@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import homeImg from '../assets/home.png'; 
+
 const Home: React.FC = () => {
   return (
     <section 
@@ -14,9 +16,12 @@ const Home: React.FC = () => {
           <h1 className="text-5xl font-light">Bare Essentials</h1>         
           <h2 className="text-4xl font-light">2025 collection</h2>
 
-          <button className="px-6 py-2 border border-white text-white text-xs tracking-wider uppercase hover:bg-white hover:text-black transition">
+          <Link 
+            to="/clothing" 
+            className="inline-block px-6 py-2 border border-white text-white text-xs tracking-wider uppercase hover:bg-white hover:text-black transition"
+          >
             Shop Now
-          </button>
+          </Link>
         </div>
       </div>
     </section>

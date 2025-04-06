@@ -7,8 +7,8 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="relative w-full bg-white text-black px-10 py-4 flex justify-between items-center shadow-sm text-sm tracking-wide font-light sticky top-0 z-50">
-      {/* Left - Logo */}
-      <div className="text-2xl font-extralight tracking-widest">TAUPE</div>
+      {/* Left - Logo with Link to Home */}
+      <Link to="/" className="text-2xl font-extralight tracking-widest">TAUPE</Link>
 
       {/* Center - Navigation */}
       <ul className="flex gap-6 justify-center flex-1 max-w-2xl">
