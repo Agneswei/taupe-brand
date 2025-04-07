@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import homeImg from '../assets/home.png'; 
 import CollectionGrid from "../components/CollectionGrid";
 import ProductScroller from "../components/ProductScroller";
-
+import TaupeOnYouPreview from "../components/TaupeOnYou";
 import { products } from "../data/products";
 
 const Home: React.FC = () => {
@@ -31,9 +31,8 @@ const Home: React.FC = () => {
       </div>
       <div>
       <CollectionGrid />
-      
       <ProductScroller title="Picked Just For You" products={pickedForYou} />
-
+      <TaupeOnYouPreview />
     </div>
     </section>
   );
