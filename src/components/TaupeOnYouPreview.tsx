@@ -7,11 +7,11 @@ const TaupeOnYouPreview: React.FC = () => {
   const featuredImages = [
     { 
       imageUrl: "/taupe-on-you/1.png", 
-      username: "@olivia.style" 
+      username: "@kikinicha_"
     },
     { 
       imageUrl: "/taupe-on-you/8.png", 
-      username: "@zoe_outfits" 
+      username: "@osnn" 
     }
   ];
 
