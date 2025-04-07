@@ -9,6 +9,7 @@ export type Product = {
       colors?: { name: string; code: string; image: string }[];
       sizes?: string[];
     };
+    collection?: string;
   };
   
   const rawProducts = [
@@ -24,7 +25,9 @@ export type Product = {
           { name: "Gray", code: "#bcbcbc", image: "/clothing/triciagray.png" },
         ],
         sizes: ["XS", "S", "M", "L"] 
-      } 
+      },
+      collection: "Bare Essentials",
+ 
     },
     {
       name: "Lena Button Back top",
@@ -60,7 +63,7 @@ export type Product = {
       image: "/clothing/mira.png",
       price: 1390,
       category: "Tops",
-      subcategory: "Cardigans & Sweaters"
+      subcategory: "Cardigans | Sweaters"
     },
     {
       name: "Be That Light T-Shirt",

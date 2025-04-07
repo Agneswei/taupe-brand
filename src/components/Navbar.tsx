@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 // SVG for Search Icon 
@@ -44,6 +44,14 @@ const Navbar: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+  
+  // Create refs for the dropdown elements
+  const clothingDropdownRef = useRef<HTMLLIElement>(null);
+  const accessoriesDropdownRef = useRef<HTMLLIElement>(null);
+  
+  // Add a timeout to prevent the dropdown from closing immediately
+  let clothingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  let accessoriesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,6 +61,52 @@ const Navbar: React.FC = () => {
       setShowSearch(false);
       setSearchQuery('');
     }
+  };
+
+  // Handle clicks outside of dropdowns to close them
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (clothingDropdownRef.current && !clothingDropdownRef.current.contains(event.target as Node)) {
+        setShowClothingDropdown(false);
+      }
+      if (accessoriesDropdownRef.current && !accessoriesDropdownRef.current.contains(event.target as Node)) {
+        setShowAccessoriesDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Functions to handle mouseEnter and mouseLeave with delay
+  const handleClothingMouseEnter = () => {
+    if (clothingTimeoutRef.current) {
+      clearTimeout(clothingTimeoutRef.current);
+      clothingTimeoutRef.current = null;
+    }
+    setShowClothingDropdown(true);
+  };
+
+  const handleClothingMouseLeave = () => {
+    clothingTimeoutRef.current = setTimeout(() => {
+      setShowClothingDropdown(false);
+    }, 300); // 300ms delay before hiding the dropdown
+  };
+
+  const handleAccessoriesMouseEnter = () => {
+    if (accessoriesTimeoutRef.current) {
+      clearTimeout(accessoriesTimeoutRef.current);
+      accessoriesTimeoutRef.current = null;
+    }
+    setShowAccessoriesDropdown(true);
+  };
+
+  const handleAccessoriesMouseLeave = () => {
+    accessoriesTimeoutRef.current = setTimeout(() => {
+      setShowAccessoriesDropdown(false);
+    }, 300); // 300ms delay before hiding the dropdown
   };
 
   return (
@@ -65,37 +119,42 @@ const Navbar: React.FC = () => {
         {/* Clothing */}
         <li
           className="relative hover:underline cursor-pointer"
-          onMouseEnter={() => setShowClothingDropdown(true)}
-          onMouseLeave={() => setShowClothingDropdown(false)}
+          onMouseEnter={handleClothingMouseEnter}
+          onMouseLeave={handleClothingMouseLeave}
+          ref={clothingDropdownRef}
         >
           <Link to="/clothing">Clothing</Link>
 
           {showClothingDropdown && (
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-4 w-[700px] bg-white text-black p-6 shadow-xl grid grid-cols-2 gap-6 z-50 rounded-lg">
+            <div 
+              className="absolute left-1/2 transform -translate-x-1/2 top-full mt-4 w-[700px] bg-white text-black p-6 shadow-xl grid grid-cols-2 gap-6 z-50 rounded-lg"
+              onMouseEnter={handleClothingMouseEnter}
+              onMouseLeave={handleClothingMouseLeave}
+            >
               <div>
                 <h4 className="font-semibold mb-2">Categories</h4>
                 <ul className="space-y-1">
-                  <li>All Clothing</li>
-                  <li>Tank Tops</li>
-                  <li>Blouse</li>
-                  <li>T-Shirts</li>
-                  <li>Cardigans | Sweaters</li>
-                  <li>Outerwear</li>
-                  <li>Pants</li>
-                  <li>Dresses</li>
-                  <li>Skirts</li>
-                  <li>Shorts</li>
-                  <li>Sets</li>
+                  <li><Link to="/clothing" className="block py-1 hover:text-gray-500">All Clothing</Link></li>
+                  <li><Link to="/clothing?category=Tops&subcategory=Tank+Tops" className="block py-1 hover:text-gray-500">Tank Tops</Link></li>
+                  <li><Link to="/clothing?category=Tops&subcategory=Shirts+%26+Blouses" className="block py-1 hover:text-gray-500">Shirts & Blouses</Link></li>
+                  <li><Link to="/clothing?category=Tops&subcategory=T-Shirts" className="block py-1 hover:text-gray-500">T-Shirts</Link></li>
+                  <li><Link to="/clothing?category=Tops&subcategory=Cardigans+%26+Sweaters" className="block py-1 hover:text-gray-500">Cardigans | Sweaters</Link></li>
+                  <li><Link to="/clothing?category=Outerwear" className="block py-1 hover:text-gray-500">Outerwear</Link></li>
+                  <li><Link to="/clothing?category=Bottoms&subcategory=Pants" className="block py-1 hover:text-gray-500">Pants</Link></li>
+                  <li><Link to="/clothing?category=Dresses" className="block py-1 hover:text-gray-500">Dresses</Link></li>
+                  <li><Link to="/clothing?category=Bottoms&subcategory=Skirts" className="block py-1 hover:text-gray-500">Skirts</Link></li>
+                  <li><Link to="/clothing?category=Bottoms&subcategory=Shorts" className="block py-1 hover:text-gray-500">Shorts</Link></li>
+                  <li><Link to="/clothing?category=Sets" className="block py-1 hover:text-gray-500">Sets</Link></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Collections</h4>
                 <ul className="space-y-1">
-                  <li>Be That Light</li>
-                  <li>Bare Essentials SS25</li>
-                  <li>Romance Mansion</li>
-                  <li>Desk To Dinner</li>
-                  <li>Summer Mood SS24</li>
+                  <li><Link to="/clothing?search=Be+That+Light" className="block py-1 hover:text-gray-500">Be That Light</Link></li>
+                  <li><Link to="/clothing?search=Bare+Essentials" className="block py-1 hover:text-gray-500">Bare Essentials SS25</Link></li>
+                  <li><Link to="/clothing?search=Romance+Mansion" className="block py-1 hover:text-gray-500">Romance Mansion</Link></li>
+                  <li><Link to="/clothing?search=Desk+To+Dinner" className="block py-1 hover:text-gray-500">Desk To Dinner</Link></li>
+                  <li><Link to="/clothing?search=Summer+Mood" className="block py-1 hover:text-gray-500">Summer Mood SS24</Link></li>
                 </ul>
               </div>
             </div>
@@ -105,37 +164,44 @@ const Navbar: React.FC = () => {
         {/* Accessories */}
         <li
           className="relative hover:underline cursor-pointer"
-          onMouseEnter={() => setShowAccessoriesDropdown(true)}
-          onMouseLeave={() => setShowAccessoriesDropdown(false)}
+          onMouseEnter={handleAccessoriesMouseEnter}
+          onMouseLeave={handleAccessoriesMouseLeave}
+          ref={accessoriesDropdownRef}
         >
           <span>Accessories</span>
 
           {showAccessoriesDropdown && (
-            <div className="absolute left-0 transform top-full mt-4 w-[500px] bg-white text-black p-6 shadow-xl grid grid-cols-2 gap-6 z-50 rounded-lg">
+            <div 
+              className="absolute left-0 transform top-full mt-4 w-[500px] bg-white text-black p-6 shadow-xl grid grid-cols-2 gap-6 z-50 rounded-lg"
+              onMouseEnter={handleAccessoriesMouseEnter}
+              onMouseLeave={handleAccessoriesMouseLeave}
+            >
               <div>
                 <h4 className="font-semibold mb-2">Categories</h4>
                 <ul className="space-y-1">
-                  <li>All Accessories</li>
-                  <li>Bags</li>
-                  <li>Hats</li>
+                  <li><Link to="/accessories" className="block py-1 hover:text-gray-500">All Accessories</Link></li>
+                  <li><Link to="/accessories?search=Bags" className="block py-1 hover:text-gray-500">Bags</Link></li>
+                  <li><Link to="/accessories?search=Hats" className="block py-1 hover:text-gray-500">Hats</Link></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Style Picks</h4>
                 <ul className="space-y-1">
-                  <li>Minimalist Staples</li>
-                  <li>Color Pop</li>
-                  <li>Pauline's Favorites</li>
+                  <li><Link to="/accessories?search=Minimalist+Staples" className="block py-1 hover:text-gray-500">Minimalist Staples</Link></li>
+                  <li><Link to="/accessories?search=Color+Pop" className="block py-1 hover:text-gray-500">Color Pop</Link></li>
+                  <li><Link to="/accessories?search=Pauline+Favorites" className="block py-1 hover:text-gray-500">Pauline's Favorites</Link></li>
                 </ul>
               </div>
             </div>
           )}
         </li>
 
-        <li className="hover:underline cursor-pointer">Featured</li>
+        <li className="hover:underline cursor-pointer">
+          <Link to="/featured">Featured</Link>
+        </li>
       </ul>
 
-   {/* Right - Icons */}
+      {/* Right - Icons */}
       <div className="flex gap-4 items-center">
         {/* Search Button */}
         <button 
