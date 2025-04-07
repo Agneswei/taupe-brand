@@ -8,7 +8,7 @@ type FilterBarProps = {
   subcategories: string[];
 };
 
-const categories = ["All", "Tops", "Dresses", "Pants", "Sets"];
+const categories = ["All", "Tops", "Bottoms", "Dresses", "Outerwear", "Sets"];
 
 const FilterBar: React.FC<FilterBarProps> = ({
   selectedCategory,

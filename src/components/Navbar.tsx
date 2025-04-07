@@ -76,13 +76,15 @@ const Navbar: React.FC = () => {
                 <h4 className="font-semibold mb-2">Categories</h4>
                 <ul className="space-y-1">
                   <li>All Clothing</li>
-                  <li>Tops</li>
-                  <li>Sleeveless</li>
-                  <li>Cardigans</li>
+                  <li>Tank Tops</li>
+                  <li>Blouse</li>
+                  <li>T-Shirts</li>
+                  <li>Cardigans | Sweaters</li>
+                  <li>Outerwear</li>
+                  <li>Pants</li>
                   <li>Dresses</li>
                   <li>Skirts</li>
                   <li>Shorts</li>
-                  <li>Pants</li>
                   <li>Sets</li>
                 </ul>
               </div>
@@ -91,6 +93,8 @@ const Navbar: React.FC = () => {
                 <ul className="space-y-1">
                   <li>Be That Light</li>
                   <li>Bare Essentials SS25</li>
+                  <li>Romance Mansion</li>
+                  <li>Desk To Dinner</li>
                   <li>Summer Mood SS24</li>
                 </ul>
               </div>
@@ -114,8 +118,6 @@ const Navbar: React.FC = () => {
                   <li>All Accessories</li>
                   <li>Bags</li>
                   <li>Hats</li>
-                  <li>Scarves</li>
-                  <li>Socks</li>
                 </ul>
               </div>
               <div>
@@ -123,7 +125,7 @@ const Navbar: React.FC = () => {
                 <ul className="space-y-1">
                   <li>Minimalist Staples</li>
                   <li>Color Pop</li>
-                  <li>Soft Textures</li>
+                  <li>Pauline's Favorites</li>
                 </ul>
               </div>
             </div>

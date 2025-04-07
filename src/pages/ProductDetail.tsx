@@ -68,27 +68,34 @@ const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   
-  const productId = Number(id);
-  const baseProduct = products.find(p => p.id === productId);
-  
-  // If product doesn't exist, show not found message
-  if (!baseProduct) {
-    return <div className="p-10 text-center">Product not found</div>;
-  }
-
-  // Get product with variants (using our helper function)
-  const product = getProductWithVariants(baseProduct);
-  const productVariant = product.variants!;
-  
+  // Initialize with default values
+  const [product, setProduct] = useState<ExtendedProduct | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [selectedColor, setSelectedColor] = useState(productVariant.colors[0]);
+  const [selectedColor, setSelectedColor] = useState<ProductColor | null>(null);
   const [selectedSize, setSelectedSize] = useState("");
   const [isSizeError, setIsSizeError] = useState(false);
+  const [allImages, setAllImages] = useState<string[]>([]);
+  const [hasTrendingColors, setHasTrendingColors] = useState(false);
 
-  // Get all available images
-  const allImages = productVariant.colors.map(color => color.image);
+  // Set up the product data once the component mounts
+  useEffect(() => {
+    const productId = Number(id);
+    const foundProduct = products.find(p => p.id === productId);
+    
+    if (foundProduct) {
+      const productWithVariants = getProductWithVariants(foundProduct);
+      setProduct(productWithVariants);
+      
+      if (productWithVariants.variants) {
+        const variantImages = productWithVariants.variants.colors.map(color => color.image);
+        setAllImages(variantImages);
+        setSelectedColor(productWithVariants.variants.colors[0]);
+        setHasTrendingColors(productWithVariants.variants.colors.length >= 2);
+      }
+    }
+  }, [id]);
 
-  // Use the image of the selected color as the main image when a color is selected
+  // Update the image when a color is selected
   useEffect(() => {
     if (selectedColor) {
       const colorImageIndex = allImages.indexOf(selectedColor.image);
@@ -97,6 +104,11 @@ const ProductDetail: React.FC = () => {
       }
     }
   }, [selectedColor, allImages]);
+
+  // If product is not found or still loading
+  if (!product) {
+    return <div className="p-10 text-center">Product not found</div>;
+  }
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) => 
@@ -126,8 +138,13 @@ const ProductDetail: React.FC = () => {
     return (price / 100).toFixed(2);
   };
 
-  // Determine if we should show trending colors
-  const hasTrendingColors = productVariant.colors.length >= 2;
+  // Required to ensure we have variants defined
+  if (!product.variants) {
+    return <div className="p-10 text-center">Product data issue</div>;
+  }
+
+  // Destructure variants for easier access
+  const { colors, sizes } = product.variants;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -223,7 +240,7 @@ const ProductDetail: React.FC = () => {
             <div className="mb-8">
               <h2 className="font-medium mb-3">Trending Colours</h2>
               <div className="flex flex-wrap gap-2">
-                {productVariant.colors.slice(0, 2).map((color) => (
+                {colors.slice(0, 2).map((color) => (
                   <div 
                     key={color.name}
                     className="w-12 h-12 rounded-full border overflow-hidden"
@@ -235,14 +252,14 @@ const ProductDetail: React.FC = () => {
           )}
 
           {/* Color Options - only show if there are multiple colors */}
-          {productVariant.colors.length > 1 && (
+          {colors.length > 1 && (
             <div className="mb-8">
               <div className="flex justify-between items-center mb-3">
                 <h2 className="font-medium">Colour</h2>
                 {selectedColor && <span>{selectedColor.name}</span>}
               </div>
               <div className="flex flex-wrap gap-2">
-                {productVariant.colors.map((color) => (
+                {colors.map((color) => (
                   <button
                     key={color.name}
                     className={`w-12 h-12 rounded-full border-2 overflow-hidden hover:opacity-80 transition ${
@@ -264,7 +281,7 @@ const ProductDetail: React.FC = () => {
               <button className="text-sm underline">Size Guide</button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {productVariant.sizes.map((size) => (
+              {sizes.map((size) => (
                 <button
                   key={size}
                   className={`px-4 py-2 border text-sm min-w-[3rem] transition ${

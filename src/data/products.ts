@@ -28,17 +28,32 @@ export type Product = {
     },
     {
       name: "Lena Button Back top",
-      image: "/clothing/lena.png",
+      image: "/clothing/lenagray.png",
       price: 1090,
       category: "Tops",
-      subcategory: "Shirts & Blouses"
+      subcategory: "Shirts & Blouses",
+      variants: {
+        colors: [
+          { name: "Gray", code: "#444444", image: "/clothing/lenagray.png" },
+          { name: "Black", code: "#000000", image: "/clothing/lenablack.png" },
+          { name: "Cream", code: "#f1ead6", image: "/clothing/lenacream.png" },
+        ],
+        sizes: ["XS", "S", "M", "L"] 
+      } 
     },
     {
       name: "Elisa Super Soft Sweater",
-      image: "/clothing/elisa.png",
+      image: "/clothing/elisawhite.png",
       price: 1090,
       category: "Tops",
-      subcategory: "Shirts & Blouses"
+      subcategory: "Shirts & Blouses",
+      variants: {
+        colors: [
+          { name: "White", code: "#ffffff", image: "/clothing/elisawhite.png" },
+          { name: "Black", code: "#000000", image: "/clothing/elisablack.png" },
+        ],
+        sizes: ["XS", "S", "M", "L"] 
+      }
     },
     {
       name: "Mira Cardigan",
@@ -48,16 +63,52 @@ export type Product = {
       subcategory: "Cardigans & Sweaters"
     },
     {
+      name: "Be That Light T-Shirt",
+      image: "/clothing/btl.png",
+      price: 1390,
+      category: "Tops",
+      subcategory: "T-Shirts"    },
+    {
       name: "Greta Wide Leg Pants",
       image: "/clothing/gretawhite.png",
       price: 1690,
-      category: "Pants"
+      category: "Bottoms",
+      subcategory: "Pants"
     },
     {
       name: "Evelyn Straight Leg Pants",
       image: "/clothing/evelyn.png",
       price: 1390,
-      category: "Pants"
+      category: "Bottoms",
+      subcategory: "Pants"
+    },
+    {
+      name: "Gina Shorts",
+      image: "/clothing/ginablack.png",
+      price: 790,
+      category: "Bottoms",
+      subcategory: "Shorts",
+      variants: {
+        colors: [
+          { name: "Black", code: "#000000", image: "/clothing/ginablack.png" },
+          { name: "White", code: "#ffffff", image: "/clothing/ginawhite.png" },
+        ],
+        sizes: ["XS", "S", "M", "L"] 
+      }
+    },
+    {
+      name: "Margaux Set",
+      image: "/clothing/margauxgray.png",
+      price: 2590,
+      category: "Sets",
+      subcategory: "Shorts",
+      variants: {
+        colors: [
+          { name: "Gray", code: "#aea08b", image: "/clothing/margauxgray.png" },
+          { name: "Ivory", code: "#ecebe7", image: "/clothing/margauxivory.png" },
+        ],
+        sizes: ["S", "M"] 
+      }
     },
   ];
   
