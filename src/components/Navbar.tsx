@@ -321,6 +321,13 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu - Full Screen Overlay */}
       {showMobileMenu && (
         <div className="fixed inset-0 bg-white z-40 overflow-y-auto pt-20 pb-6 px-6">
+          <button 
+            onClick={() => setShowMobileMenu(false)} 
+            className="absolute top-6 right-6 text-2xl font-light"
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
           <div className="flex flex-col h-full">
             <div className="flex-1">
               {/* Mobile Navigation */}
