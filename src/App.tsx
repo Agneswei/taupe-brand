@@ -7,7 +7,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import { CartProvider } from './context/CartContext';
-import TaupeOnYou from "./pages/taupe-on-you";
+import TaupeOnYou from "./pages/TaupeOnYou";
 import './App.css';
 
 function App() {
