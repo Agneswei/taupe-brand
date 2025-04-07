@@ -72,7 +72,7 @@ const ProductDetail: React.FC = () => {
   const [isSizeError, setIsSizeError] = useState(false);
   const [allImages, setAllImages] = useState<string[]>([]);
   const [hasTrendingColors, setHasTrendingColors] = useState(false);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
 
   useEffect(() => {

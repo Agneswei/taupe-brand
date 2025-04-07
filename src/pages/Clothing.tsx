@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { products } from "../data/products";
 import ProductCard from "../components/ProductCard";
 import FilterBar from "../components/FilterBar";
@@ -19,7 +19,7 @@ const Clothing: React.FC = () => {
     useEffect(() => {
       window.scrollTo(0, 0);
     }, []);
-    
+
   // Update filters when URL params change
   useEffect(() => {
     setSearchQuery(searchParam || "");

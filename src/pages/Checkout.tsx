@@ -124,7 +124,6 @@ const Checkout: React.FC = () => {
   const [postalCode, setPostalCode] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [shippingMethod, setShippingMethod] = useState<string>('standard');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [step, setStep] = useState<'information' | 'shipping' | 'payment'>('information');
 
   // Shipping methods data
