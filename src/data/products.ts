@@ -5,6 +5,10 @@ export type Product = {
     price: number;
     category: string;
     subcategory?: string;
+    variants?: {
+      colors?: { name: string; code: string; image: string }[];
+      sizes?: string[];
+    };
   };
   
   const rawProducts = [
@@ -13,7 +17,14 @@ export type Product = {
       image: "/clothing/triciablack.png",
       price: 990,
       category: "Tops",
-      subcategory: "Tank Tops"
+      subcategory: "Tank Tops",
+      variants: {
+        colors: [
+          { name: "Black", code: "#000000", image: "/clothing/triciablack.png" },
+          { name: "Gray", code: "#bcbcbc", image: "/clothing/triciagray.png" },
+        ],
+        sizes: ["XS", "S", "M", "L"] 
+      } 
     },
     {
       name: "Lena Button Back top",
