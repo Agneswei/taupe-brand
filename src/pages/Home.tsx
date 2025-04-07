@@ -7,7 +7,7 @@ import ProductScroller from "../components/ProductScroller";
 import { products } from "../data/products";
 
 const Home: React.FC = () => {
-  const pickedForYou = products.slice(0, 8); // or however many you'd like
+  const pickedForYou = products.slice(0, 8); 
 
   return (
     <section 

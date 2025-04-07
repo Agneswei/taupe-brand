@@ -9,7 +9,6 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 
-// Initialize Stripe with your publishable key
 const stripePromise = loadStripe('pk_test_51RB5rjPiC94MDr5SnhKfIZ2W9pjmV2L8m96BmRFRfFWFlUDz8PCXenUIXZkwGU6o03iZDVGGQMoKuLVdmDRCeF0z00XcpltNkf');
 
 // Type for the PaymentForm props
@@ -17,7 +16,6 @@ interface PaymentFormProps {
   onPaymentComplete: () => void;
 }
 
-// Create a payment form component that uses the Stripe hooks
 const PaymentForm: React.FC<PaymentFormProps> = ({ onPaymentComplete }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -28,14 +26,12 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onPaymentComplete }) => {
     e.preventDefault();
     
     if (!stripe || !elements) {
-      // Stripe hasn't loaded yet
       return;
     }
     
     setProcessing(true);
     
     try {
-      // Example of server request to create payment intent
       const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -57,7 +53,6 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onPaymentComplete }) => {
         payment_method: {
           card: cardElement,
           billing_details: {
-            // Include billing details from your form
             name: 'Jenny Rosen', // Replace with actual customer name from form
           },
         },
@@ -67,7 +62,6 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onPaymentComplete }) => {
         setError(result.error.message || 'An error occurred');
         setProcessing(false);
       } else {
-        // Payment successful
         onPaymentComplete();
       }
     } catch (err) {
@@ -157,7 +151,7 @@ const Checkout: React.FC = () => {
   // Get selected shipping method
   const selectedShipping = shippingMethods.find(method => method.id === shippingMethod) || shippingMethods[0];
   
-  // Calculate tax (estimate - 5% of subtotal)
+  // Calculate tax (estimate - 7% of subtotal)
   const tax = Math.round(subtotal * 0.07);
   
   // Calculate total

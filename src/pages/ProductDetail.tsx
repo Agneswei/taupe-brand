@@ -3,8 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 
-// Step 1: Update your Product type to include variant information
-// This would go in your src/data/products.ts file
+
 type ProductColor = {
   name: string;
   code: string;
@@ -16,7 +15,6 @@ type ProductVariant = {
   sizes?: string[];
 }
 
-// Extend your existing product type
 type ExtendedProduct = {
   id: number;
   name: string;
@@ -24,13 +22,10 @@ type ExtendedProduct = {
   price: number;
   category: string;
   subcategory?: string;
-  // New properties for variants
   variants?: ProductVariant;
 };
 
-// Step 2: Create a mapping function that sets default values when variants are missing
 const getProductWithVariants = (product: any): ExtendedProduct => {
-  // If the product already has variants, return it as is
   if (product.variants) {
     return product as ExtendedProduct;
   }
@@ -70,7 +65,6 @@ const ProductDetail: React.FC = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   
-  // Initialize with default values
   const [product, setProduct] = useState<ExtendedProduct | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState<ProductColor | null>(null);
@@ -81,7 +75,6 @@ const ProductDetail: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
 
-  // Set up the product data once the component mounts
   useEffect(() => {
     const productId = Number(id);
     const foundProduct = products.find(p => p.id === productId);
@@ -151,7 +144,7 @@ const ProductDetail: React.FC = () => {
       selectedColor ? selectedColor.name : undefined
     );
     
-    // Show success message briefly
+    // Show success message 
     setAddedToCart(true);
     setTimeout(() => {
       setAddedToCart(false);
@@ -162,17 +155,14 @@ const ProductDetail: React.FC = () => {
     navigate("/cart");
   };
 
-  // Format the price to display dollars correctly
   const formatPrice = (price: number) => {
     return `฿${price.toLocaleString("th-TH")}`;
   };
 
-  // Required to ensure we have variants defined
   if (!product.variants) {
     return <div className="p-10 text-center">Product data issue</div>;
   }
 
-  // Destructure variants for easier access
   const { colors, sizes } = product.variants;
 
   return (

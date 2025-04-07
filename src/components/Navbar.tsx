@@ -94,7 +94,7 @@ const Navbar: React.FC = () => {
   const handleClothingMouseLeave = () => {
     clothingTimeoutRef.current = setTimeout(() => {
       setShowClothingDropdown(false);
-    }, 300); // 300ms delay before hiding the dropdown
+    }, 300); 
   };
 
   const handleAccessoriesMouseEnter = () => {
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
   const handleAccessoriesMouseLeave = () => {
     accessoriesTimeoutRef.current = setTimeout(() => {
       setShowAccessoriesDropdown(false);
-    }, 300); // 300ms delay before hiding the dropdown
+    }, 300); 
   };
 
   return (
