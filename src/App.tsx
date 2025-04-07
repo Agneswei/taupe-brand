@@ -1,35 +1,50 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext'; // Import CartProvider
+import Layout from './components/Layout';
 import Home from './pages/Home';
 import Clothing from './pages/Clothing';
+import Accessories from './pages/Accessories';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
-import { CartProvider } from './context/CartContext';
-import TaupeOnYou from "./pages/TaupeOnYou";
-import Accessories from "./pages/Accessories";  
-import './App.css';
+import TaupeOnYou from './pages/TaupeOnYou';
+// Import other page components as needed
 
-function App() {
+const App: React.FC = () => {
   return (
-    <CartProvider>
-      <Router>
-        <Navbar />
+    <CartProvider> {/* Wrap everything in CartProvider */}
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/clothing" element={<Clothing />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order-confirmation" element={<OrderConfirmation />} />
-          <Route path="/taupe-on-you" element={<TaupeOnYou />} />
-          <Route path="/accessories" element={<Accessories />} />
-
+          <Route path="/" element={<Layout />}>
+            {/* Home route */}
+            <Route index element={<Home />} />
+            
+            {/* Main pages */}
+            <Route path="clothing" element={<Clothing />} />
+            <Route path="accessories" element={<Accessories />} />
+            <Route path="taupe-on-you" element={<TaupeOnYou />} />
+            
+            {/* Product pages */}
+            <Route path="product/:id" element={<ProductDetail />} />
+            
+            {/* Cart and checkout flow */}
+            <Route path="cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="order-confirmation" element={<OrderConfirmation />} />
+            
+            {/* Other pages would go here */}
+            {/* <Route path="about" element={<About />} /> */}
+            {/* <Route path="contact" element={<Contact />} /> */}
+            
+            {/* 404 page */}
+            <Route path="*" element={<div className="p-10 text-center">Page not found</div>} />
+          </Route>
         </Routes>
-      </Router>
+      </BrowserRouter>
     </CartProvider>
   );
-}
+};
 
 export default App;
