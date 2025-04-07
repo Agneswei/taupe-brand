@@ -16,20 +16,41 @@ const collectionSet1 = [
     query: "Summer+Mood"
   },
   {
-    name: "Vie Elegante FW 23",
-    image: "/collections/vieelegante.png",
-    query: "Vie+Elegante"
-  },
-];
-
-const collectionSet2 = [
-  {
     name: "Ticket To Soho FW23",
     image: "/collections/TTS.png",
     query: "Ticket+To+Soho"
   },
+  
+];
+
+const collectionSet2 = [
+  {
+    name: "Vie Elegante FW 23",
+    image: "/collections/vieelegante.png",
+    query: "Vie+Elegante"
+  },
  
 ];
+
+const collectionSet3 = [
+  {
+    name: "From Desk",
+    image: "/collections/desk.png",
+    query: "To+Desk"
+  },
+  {
+    name: "To Night",
+    image: "/collections/dinner.png",
+    query: "To+Night"
+  },
+];
+const latestDrop = products.filter(p =>
+  ["Lena Button Back Top", "Mira Cardigan", "Greta Wide Leg Pants", "Tricia Breathable Knit Tank"].includes(p.name)
+);
+
+const bestsellers = products.filter(p =>
+  ["Chloe Top", "Jenny Top", "Luna Top", "Selina SKirt"].includes(p.name)
+);
 
 
   return (
@@ -58,22 +79,25 @@ const collectionSet2 = [
 
       {/* Rest of content - Now outside the hero section */}
       <div>
-  <CollectionGrid collections={collectionSet1} />
-  <ProductScroller title="Latest Drop" products={products} />
-</div>
-
-{/* Full-width second collection grid OUTSIDE the default container */}
-<div className="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
-  <CollectionGrid collections={collectionSet2} />
-</div>
-
-<div>
-  <TaupeOnYouPreview />
-</div>
-
+      <CollectionGrid collections={collectionSet1} />
+      <ProductScroller title="Latest Drop" products={latestDrop} />
     </div>
-  );
-};
+
+    {/* Full-width second collection grid OUTSIDE the default container */}
+    <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+      <CollectionGrid collections={collectionSet2} />
+    </div>
+    <ProductScroller title="" products={bestsellers} />
+
+    <CollectionGrid collections={collectionSet3} />
+
+    <div>
+      <TaupeOnYouPreview />
+    </div>
+
+        </div>
+    );
+  };
 
 export default Home;
 

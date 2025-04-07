@@ -30,7 +30,7 @@ export type Product = {
  
     },
     {
-      name: "Lena Button Back top",
+      name: "Lena Button Back Top",
       image: "/clothing/lenagray.png",
       price: 1090,
       category: "Tops",
@@ -235,19 +235,63 @@ export type Product = {
       collection: "Bare Essentials",
     },
     {
-      name: "Velvet Box Bag",
-      image: "/clothing/bags/velvetGold.png",
-      price: 1790,
-      category: "Accessories",
-      subcategory: "Bags",      
+      name: "Jenny Top",
+      image: "/clothing/VE/jenny.png",
+      price: 790,
+      category: "Tops",
+      subcategory: "Shirts & Blouses",      
       variants: {
         colors: [
-          { name: "Golden Brown", code: "#958258", image: "/clothing/bags/velvetGold.png" },
-          { name: "Brown", code: "#6d4e1d", image: "/clothing/bags/velvetBrown.png" },
-          { name: "Black", code: "#000000", image: "/clothing/bags/velvetBlack.png" },        
+          { name: "Kahki", code: "#958258", image: "clothing/VE/jenny.png" },        
         ],
+        sizes: ["Free Size"] 
       },
+      collection: "Vie Elegante",
     },
+    {
+      name: "Chloe Top",
+      image: "/clothing/VE/chloeBlack.png",
+      price: 590,
+      category: "Tops",
+      subcategory: "Shirts & Blouses",      
+      variants: {
+        colors: [
+          { name: "black", code: "#000000", image: "clothing/VE/chloeBlack.png" },        
+          { name: "white", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },        
+        ],
+        sizes: ["Free Size"] 
+      },
+      collection: "Vie Elegante",
+    },
+    {
+      name: "Luna Top",
+      image: "/clothing/VE/luna1.png",
+      price: 690,
+      category: "Tops",
+      subcategory: "Shirts & Blouses",      
+      variants: {
+        colors: [
+          { name: "black", code: "#000000", image: "clothing/VE/luna1.png" },        
+        ],
+        sizes: ["Free Size"] 
+      },
+      collection: "Vie Elegante",
+    },
+    {
+      name: "Selina Skirt",
+      image: "/clothing/VE/selina.png",
+      price: 690,
+      category: "Bottoms",
+      subcategory: "Skirts",
+      variants: {
+        colors: [
+          { name: "beige", code: "#d4bb93", image: "clothing/VE/selina.png" },        
+        ],
+        sizes: ["Free Size"] 
+      },
+      collection: "Vie Elegante",
+    },
+  
   ];
   
 
