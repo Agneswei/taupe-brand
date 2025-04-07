@@ -111,6 +111,13 @@ const Navbar: React.FC = () => {
     }, 300); 
   };
 
+  // New function to handle dropdown link clicks
+  const handleDropdownLinkClick = () => {
+    // Immediately close both dropdowns when a link is clicked
+    setShowClothingDropdown(false);
+    setShowAccessoriesDropdown(false);
+  };
+
   return (
     <nav className="relative w-full bg-white text-black px-10 py-4 flex justify-between items-center shadow-sm text-sm tracking-wide font-light sticky top-0 z-50">
       {/* Left - Logo with Link to Home */}
@@ -136,28 +143,28 @@ const Navbar: React.FC = () => {
               <div>
                 <h4 className="font-semibold mb-2">Categories</h4>
                 <ul className="space-y-1">
-                  <li><Link to="/clothing" className="block py-1 hover:text-gray-500">All Clothing</Link></li>
-                  <li><Link to="/clothing?category=Tops&subcategory=Tank+Tops" className="block py-1 hover:text-gray-500">Tank Tops</Link></li>
-                  <li><Link to="/clothing?category=Tops&subcategory=Shirts+%26+Blouses" className="block py-1 hover:text-gray-500">Shirts & Blouses</Link></li>
-                  <li><Link to="/clothing?category=Tops&subcategory=T-Shirts" className="block py-1 hover:text-gray-500">T-Shirts</Link></li>
-                  <li><Link to="/clothing?category=Tops&subcategory=Cardigans+%26+Sweaters" className="block py-1 hover:text-gray-500">Cardigans | Sweaters</Link></li>
-                  <li><Link to="/clothing?category=Outerwear" className="block py-1 hover:text-gray-500">Outerwear</Link></li>
-                  <li><Link to="/clothing?category=Bottoms&subcategory=Pants" className="block py-1 hover:text-gray-500">Pants</Link></li>
-                  <li><Link to="/clothing?category=Dresses" className="block py-1 hover:text-gray-500">Dresses</Link></li>
-                  <li><Link to="/clothing?category=Bottoms&subcategory=Skirts" className="block py-1 hover:text-gray-500">Skirts</Link></li>
-                  <li><Link to="/clothing?category=Bottoms&subcategory=Shorts" className="block py-1 hover:text-gray-500">Shorts</Link></li>
-                  <li><Link to="/clothing?category=Sets" className="block py-1 hover:text-gray-500">Sets</Link></li>
+                  <li><Link to="/clothing" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">All Clothing</Link></li>
+                  <li><Link to="/clothing?category=Tops&subcategory=Tank+Tops" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Tank Tops</Link></li>
+                  <li><Link to="/clothing?category=Tops&subcategory=Shirts+%26+Blouses" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Shirts & Blouses</Link></li>
+                  <li><Link to="/clothing?category=Tops&subcategory=T-Shirts" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">T-Shirts</Link></li>
+                  <li><Link to="/clothing?category=Tops&subcategory=Cardigans+%26+Sweaters" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Cardigans | Sweaters</Link></li>
+                  <li><Link to="/clothing?category=Outerwear" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Outerwear</Link></li>
+                  <li><Link to="/clothing?category=Bottoms&subcategory=Pants" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Pants</Link></li>
+                  <li><Link to="/clothing?category=Dresses" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Dresses</Link></li>
+                  <li><Link to="/clothing?category=Bottoms&subcategory=Skirts" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Skirts</Link></li>
+                  <li><Link to="/clothing?category=Bottoms&subcategory=Shorts" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Shorts</Link></li>
+                  <li><Link to="/clothing?category=Sets" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Sets</Link></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Collections</h4>
                 <ul className="space-y-1">
-                  <li><Link to="/clothing?search=Be+That+Light" className="block py-1 hover:text-gray-500">Be That Light</Link></li>
-                  <li><Link to="/clothing?search=Bare+Essentials" className="block py-1 hover:text-gray-500">Bare Essentials SS25</Link></li>
-                  <li><Link to="/clothing?search=Desk+To+Dinner" className="block py-1 hover:text-gray-500">Desk To Dinner</Link></li>
-                  <li><Link to="/clothing?search=Summer+Mood" className="block py-1 hover:text-gray-500">Summer Mood SS24</Link></li>
-                  <li><Link to="/clothing?search=The+Tailored" className="block py-1 hover:text-gray-500">The Tailored FW24</Link></li>
-                  <li><Link to="/clothing?search=Vie+Elegante" className="block py-1 hover:text-gray-500">Vie Elegante FW 23</Link></li>
+                  <li><Link to="/clothing?search=Be+That+Light" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Be That Light</Link></li>
+                  <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Bare Essentials SS25</Link></li>
+                  <li><Link to="/clothing?search=Desk+To+Dinner" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Desk To Dinner</Link></li>
+                  <li><Link to="/clothing?search=Summer+Mood" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Summer Mood SS24</Link></li>
+                  <li><Link to="/clothing?search=The+Tailored" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">The Tailored FW24</Link></li>
+                  <li><Link to="/clothing?search=Vie+Elegante" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Vie Elegante FW 23</Link></li>
                 </ul>
               </div>
             </div>
@@ -171,7 +178,7 @@ const Navbar: React.FC = () => {
           onMouseLeave={handleAccessoriesMouseLeave}
           ref={accessoriesDropdownRef}
         >
-          <span>Accessories</span>
+          <Link to="/accessories">Accessories</Link>
 
           {showAccessoriesDropdown && (
             <div 
@@ -182,17 +189,19 @@ const Navbar: React.FC = () => {
               <div>
                 <h4 className="font-semibold mb-2">Categories</h4>
                 <ul className="space-y-1">
-                  <li><Link to="/accessories" className="block py-1 hover:text-gray-500">All Accessories</Link></li>
-                  <li><Link to="/accessories?search=Bags" className="block py-1 hover:text-gray-500">Bags</Link></li>
-                  <li><Link to="/accessories?search=Hats" className="block py-1 hover:text-gray-500">Hats</Link></li>
+                  <li><Link to="/accessories" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">All Accessories</Link></li>
+                  <li><Link to="/accessories?category=Bags" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Bags</Link></li>
+                  <li><Link to="/accessories?category=Hats" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Hats</Link></li>
+                  <li><Link to="/accessories?category=Wallets" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Wallets</Link></li>
+                  <li><Link to="/accessories?category=Scarves" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Scarves</Link></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Style Picks</h4>
                 <ul className="space-y-1">
-                  <li><Link to="/accessories?search=Minimalist+Staples" className="block py-1 hover:text-gray-500">Minimalist Staples</Link></li>
-                  <li><Link to="/accessories?search=Color+Pop" className="block py-1 hover:text-gray-500">Color Pop</Link></li>
-                  <li><Link to="/accessories?search=Pauline+Favorites" className="block py-1 hover:text-gray-500">Pauline's Favorites</Link></li>
+                  <li><Link to="/accessories?search=Minimalist+Staples" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Minimalist Staples</Link></li>
+                  <li><Link to="/accessories?search=Color+Pop" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Color Pop</Link></li>
+                  <li><Link to="/accessories?search=Pauline+Favorites" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Pauline's Favorites</Link></li>
                 </ul>
               </div>
             </div>
