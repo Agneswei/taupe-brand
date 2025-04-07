@@ -188,107 +188,19 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="relative w-full bg-white text-black px-4 sm:px-6 md:px-10 py-4 flex justify-between items-center shadow-sm text-sm tracking-wide font-light sticky top-0 z-50">
-      {/* Left - Logo with Link to Home */}
-      <Link to="/" className="text-2xl font-extralight tracking-widest z-10">TAUPE</Link>
-
-      {/* Mobile Menu Button - Only visible on small screens */}
+      {/* Left - Hamburger Menu Button (shown on all screen sizes - like ASOS) */}
       <button
-        className="md:hidden z-10"
+        className="z-10"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
-        aria-label="Toggle mobile menu"
+        aria-label="Toggle menu"
       >
         {showMobileMenu ? <CloseIconSVG /> : <MenuIconSVG />}
       </button>
 
-      {/* Center - Navigation - Hidden on mobile */}
-      <ul className="hidden md:flex gap-6 justify-center flex-1 max-w-2xl">
-        {/* Clothing */}
-        <li
-          className="relative hover:underline cursor-pointer"
-          onMouseEnter={handleClothingMouseEnter}
-          onMouseLeave={handleClothingMouseLeave}
-          ref={clothingDropdownRef}
-        >
-          <Link to="/clothing">Clothing</Link>
-
-          {showClothingDropdown && (
-            <div 
-              className="absolute left-1/2 transform -translate-x-1/2 top-full mt-4 w-[700px] bg-white text-black p-6 shadow-xl grid grid-cols-2 gap-6 z-50 rounded-lg"
-              onMouseEnter={handleClothingMouseEnter}
-              onMouseLeave={handleClothingMouseLeave}
-            >
-              <div>
-                <h4 className="font-semibold mb-2">Categories</h4>
-                <ul className="space-y-1">
-                  <li><Link to="/clothing" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">All Clothing</Link></li>
-                  <li><Link to="/clothing?category=Tops&subcategory=Tank+Tops" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Tank Tops</Link></li>
-                  <li><Link to="/clothing?category=Tops&subcategory=Shirts+%26+Blouses" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Shirts & Blouses</Link></li>
-                  <li><Link to="/clothing?category=Tops&subcategory=T-Shirts" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">T-Shirts</Link></li>
-                  <li><Link to="/clothing?category=Tops&subcategory=Cardigans+%26+Sweaters" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Cardigans | Sweaters</Link></li>
-                  <li><Link to="/clothing?category=Outerwear" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Outerwear</Link></li>
-                  <li><Link to="/clothing?category=Bottoms&subcategory=Pants" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Pants</Link></li>
-                  <li><Link to="/clothing?category=Dresses" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Dresses</Link></li>
-                  <li><Link to="/clothing?category=Bottoms&subcategory=Skirts" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Skirts</Link></li>
-                  <li><Link to="/clothing?category=Bottoms&subcategory=Shorts" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Shorts</Link></li>
-                  <li><Link to="/clothing?category=Sets" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Sets</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Collections</h4>
-                <ul className="space-y-1">
-                  <li><Link to="/clothing?search=Be+That+Light" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Be That Light</Link></li>
-                  <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Bare Essentials SS25</Link></li>
-                  <li><Link to="/clothing?search=Desk+To+Dinner" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Desk To Dinner</Link></li>
-                  <li><Link to="/clothing?search=Summer+Mood" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Summer Mood SS24</Link></li>
-                  <li><Link to="/clothing?search=The+Tailored" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">The Tailored FW24</Link></li>
-                  <li><Link to="/clothing?search=Vie+Elegante" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Vie Elegante FW 23</Link></li>
-                </ul>
-              </div>
-            </div>
-          )}
-        </li>
-
-        {/* Accessories */}
-        <li
-          className="relative hover:underline cursor-pointer"
-          onMouseEnter={handleAccessoriesMouseEnter}
-          onMouseLeave={handleAccessoriesMouseLeave}
-          ref={accessoriesDropdownRef}
-        >
-          <Link to="/accessories">Accessories</Link>
-
-          {showAccessoriesDropdown && (
-            <div 
-              className="absolute left-0 transform top-full mt-4 w-[500px] bg-white text-black p-6 shadow-xl grid grid-cols-2 gap-6 z-50 rounded-lg"
-              onMouseEnter={handleAccessoriesMouseEnter}
-              onMouseLeave={handleAccessoriesMouseLeave}
-            >
-              <div>
-                <h4 className="font-semibold mb-2">Categories</h4>
-                <ul className="space-y-1">
-                  <li><Link to="/accessories" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">All Accessories</Link></li>
-                  <li><Link to="/accessories?category=Bags" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Bags</Link></li>
-                  <li><Link to="/accessories?category=Hats" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Hats</Link></li>
-                  <li><Link to="/accessories?category=Wallets" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Wallets</Link></li>
-                  <li><Link to="/accessories?category=Scarves" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Scarves</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold mb-2">Style Picks</h4>
-                <ul className="space-y-1">
-                  <li><Link to="/accessories?search=Minimalist+Staples" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Minimalist Staples</Link></li>
-                  <li><Link to="/accessories?search=Color+Pop" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Color Pop</Link></li>
-                  <li><Link to="/accessories?search=Pauline+Favorites" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Pauline's Favorites</Link></li>
-                </ul>
-              </div>
-            </div>
-          )}
-        </li>
-
-        <li className="hover:underline cursor-pointer">
-          <Link to="/featured">Featured</Link>
-        </li>
-      </ul>
+      {/* Center - Logo with Link to Home */}
+      <Link to="/" className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-extralight tracking-widest z-10">
+        TAUPE
+      </Link>
 
       {/* Right - Icons */}
       <div className="flex gap-4 items-center z-10">
@@ -321,6 +233,13 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu - Full Screen Overlay */}
       {showMobileMenu && (
         <div className="fixed inset-0 bg-white z-40 overflow-y-auto pt-20 pb-6 px-6">
+          <button 
+            onClick={() => setShowMobileMenu(false)} 
+            className="absolute top-6 right-6 text-2xl font-light"
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
           <div className="flex flex-col h-full">
             <div className="flex-1">
               {/* Mobile Navigation */}
