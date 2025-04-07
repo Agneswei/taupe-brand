@@ -1,9 +1,59 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+// SVG for Search Icon 
+const SearchIconSVG = () => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="18" 
+    height="18" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+);
+
+// Cart icon component
+const CartIconSVG = () => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="18" 
+    height="18" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <path d="M16 10a4 4 0 0 1-8 0"></path>
+  </svg>
+);
 
 const Navbar: React.FC = () => {
-  const [showClothingDropdown, setShowClothingDropdown] = React.useState(false);
-  const [showAccessoriesDropdown, setShowAccessoriesDropdown] = React.useState(false);
+  const [showClothingDropdown, setShowClothingDropdown] = useState(false);
+  const [showAccessoriesDropdown, setShowAccessoriesDropdown] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Navigate to search results page or filter current page
+      navigate(`/clothing?search=${encodeURIComponent(searchQuery.trim())}`);
+      setShowSearch(false);
+      setSearchQuery('');
+    }
+  };
 
   return (
     <nav className="relative w-full bg-white text-black px-10 py-4 flex justify-between items-center shadow-sm text-sm tracking-wide font-light sticky top-0 z-50">
@@ -83,12 +133,45 @@ const Navbar: React.FC = () => {
         <li className="hover:underline cursor-pointer">Featured</li>
       </ul>
 
-      {/* Right - Icons */}
+   {/* Right - Icons */}
       <div className="flex gap-4 items-center">
-        <button title="Search">🔍</button>
-        <button title="Cart">🛍️</button>
+        {/* Search Button */}
+        <button 
+          title="Search" 
+          onClick={() => setShowSearch(!showSearch)}
+          className="relative"
+        >
+          <SearchIconSVG />
+        </button>
+        <button 
+          title="Cart" 
+          className="relative hover:opacity-70 transition"
+        >
+          <CartIconSVG />
+        </button>
         <button className="text-xs underline">Sign In</button>
       </div>
+
+      {/* Search Overlay */}
+      {showSearch && (
+        <div className="absolute inset-0 bg-white z-50 flex items-center px-10">
+          <form onSubmit={handleSearchSubmit} className="w-full">
+            <div className="flex items-center">
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="flex-1 py-2 border-b-2 border-gray-300 focus:border-black outline-none pr-4"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                autoFocus
+              />
+              <button type="button" onClick={() => setShowSearch(false)} className="ml-4">
+                ✕
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </nav>
   );
 };
