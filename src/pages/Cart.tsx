@@ -8,12 +8,11 @@ const Cart: React.FC = () => {
 
   // Format price from cents to dollars
   const formatPrice = (price: number) => {
-    return (price / 100).toFixed(2);
+    return `฿${price.toLocaleString("th-TH")}`;
   };
-
-  // Format price with currency
-  const formatPriceWithCurrency = (price: number, currency = 'CAD') => {
-    return `$${formatPrice(price)} ${currency}`;
+  
+  const formatPriceWithCurrency = (price: number) => {
+    return formatPrice(price);
   };
 
   // Handle quantity change

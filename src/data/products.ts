@@ -122,6 +122,7 @@ export type Product = {
         sizes: ["S", "M"] 
       },
       collection: "Vie Elegante",
+
     },
   ];
   

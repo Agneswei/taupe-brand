@@ -164,7 +164,7 @@ const ProductDetail: React.FC = () => {
 
   // Format the price to display dollars correctly
   const formatPrice = (price: number) => {
-    return (price / 100).toFixed(2);
+    return `฿${price.toLocaleString("th-TH")}`;
   };
 
   // Required to ensure we have variants defined
@@ -261,7 +261,7 @@ const ProductDetail: React.FC = () => {
             {product.name}
           </h1>
           <div className="text-xl mb-6">
-            ${formatPrice(product.price)}
+            {formatPrice(product.price)}
           </div>
 
           {/* Trending Colors - only show if there are at least 2 colors */}
@@ -357,7 +357,7 @@ const ProductDetail: React.FC = () => {
             onClick={handleAddToBag}
             className="w-full bg-black text-white py-3 mb-4 uppercase tracking-wider text-sm font-medium hover:bg-gray-800 transition"
           >
-            Add to Bag — ${formatPrice(product.price)}
+            Add to Bag — {formatPrice(product.price)}
           </button>
 
           {/* Product Details (Accordion) */}
