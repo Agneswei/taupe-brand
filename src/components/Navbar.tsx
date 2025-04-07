@@ -361,9 +361,14 @@ const Navbar: React.FC = () => {
                       <div>
                         <h4 className="font-medium mb-2 text-gray-500 text-sm uppercase">Collections</h4>
                         <ul className="space-y-3">
+                        <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick}>All Collections </Link></li>
                           <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick}>Bare Essentials</Link></li>
+                          <li><Link to="/clothing?search=Romance+Mansion" onClick={handleDropdownLinkClick}>Romance Mansion</Link></li>
+                          <li><Link to="/clothing?search=The+Tailored" onClick={handleDropdownLinkClick}>The Tailored</Link></li>
+                          <li><Link to="/clothing?search=Glamfidence" onClick={handleDropdownLinkClick}>Glamfidence</Link></li>
                           <li><Link to="/clothing?search=Summer+Mood" onClick={handleDropdownLinkClick}>Summer Mood</Link></li>
                           <li><Link to="/clothing?search=Vie+Elegante" onClick={handleDropdownLinkClick}>Vie Elegante</Link></li>
+                          <li><Link to="/clothing?search=Ticket+To+Soho" onClick={handleDropdownLinkClick}>Ticket To Soho</Link></li>
                         </ul>
                       </div>
                     </div>
