@@ -138,14 +138,14 @@ const Checkout: React.FC = () => {
     {
       id: 'standard',
       name: 'Standard Shipping',
-      price: 750,
+      price: 200,
       description: 'Standard shipping',
       estimatedDelivery: '3-5 business days'
     },
     {
       id: 'express',
       name: 'Express Shipping',
-      price: 1500,
+      price: 600,
       description: 'Express shipping',
       estimatedDelivery: '1-2 business days'
     }
@@ -158,15 +158,15 @@ const Checkout: React.FC = () => {
   const selectedShipping = shippingMethods.find(method => method.id === shippingMethod) || shippingMethods[0];
   
   // Calculate tax (estimate - 5% of subtotal)
-  const tax = Math.round(subtotal * 0.05);
+  const tax = Math.round(subtotal * 0.07);
   
   // Calculate total
   const total = subtotal + selectedShipping.price + tax;
 
   // Format price from cents to dollars
   const formatPrice = (price: number) => {
-    return (price / 100).toFixed(2);
-  };
+    return `฿${(price).toLocaleString("th-TH")}`;
+};
 
   // Handle continue to shipping
   const handleContinueToShipping = (e: FormEvent) => {
@@ -454,7 +454,7 @@ const Checkout: React.FC = () => {
                             <p>{method.name}</p>
                             <p className="text-sm text-gray-600">{method.estimatedDelivery}</p>
                           </div>
-                          <p>${formatPrice(method.price)}</p>
+                          <p>{formatPrice(method.price)}</p>
                         </div>
                       </label>
                     </div>
@@ -508,7 +508,7 @@ const Checkout: React.FC = () => {
                   </div>
                   <div className="flex justify-between">
                     <p className="text-sm text-gray-600">Method</p>
-                    <p className="text-sm">{selectedShipping.name} · ${formatPrice(selectedShipping.price)}</p>
+                    <p className="text-sm">{selectedShipping.name} · {formatPrice(selectedShipping.price)}</p>
                     <button
                       type="button"
                       onClick={handleBackToShipping}
@@ -551,7 +551,7 @@ const Checkout: React.FC = () => {
                     {item.color && <p className="text-xs text-gray-500">Color: {item.color}</p>}
                   </div>
                   <div className="text-sm">
-                    ${formatPrice(item.price * item.quantity)}
+                    {formatPrice(item.price * item.quantity)}
                   </div>
                 </div>
               ))}
@@ -559,19 +559,19 @@ const Checkout: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span>${formatPrice(subtotal)}</span>
+                  <span>{formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Shipping</span>
-                  <span>${formatPrice(selectedShipping.price)}</span>
+                  <span>{formatPrice(selectedShipping.price)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Tax</span>
-                  <span>${formatPrice(tax)}</span>
+                  <span>{formatPrice(tax)}</span>
                 </div>
                 <div className="flex justify-between pt-3 border-t border-gray-200 font-medium">
                   <span>Total</span>
-                  <span>${formatPrice(total)}</span>
+                  <span>{formatPrice(total)}</span>
                 </div>
               </div>
             </div>
