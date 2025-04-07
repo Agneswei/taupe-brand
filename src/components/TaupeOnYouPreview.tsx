@@ -19,7 +19,7 @@ const TaupeOnYouPreview: React.FC = () => {
     <section className="my-12 px-6 text-center">
       <Link
         to="/taupe-on-you"
-        className="inline-block mb-6 text-xl font-medium hover:text-gray-600 transition"
+        className="inline-block mb-6 text-xl font-light hover:text-gray-600 transition"
       >
         Taupe on You
       </Link>
