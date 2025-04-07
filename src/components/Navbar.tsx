@@ -152,9 +152,9 @@ const Navbar: React.FC = () => {
                 <ul className="space-y-1">
                   <li><Link to="/clothing?search=Be+That+Light" className="block py-1 hover:text-gray-500">Be That Light</Link></li>
                   <li><Link to="/clothing?search=Bare+Essentials" className="block py-1 hover:text-gray-500">Bare Essentials SS25</Link></li>
-                  <li><Link to="/clothing?search=Romance+Mansion" className="block py-1 hover:text-gray-500">Romance Mansion</Link></li>
                   <li><Link to="/clothing?search=Desk+To+Dinner" className="block py-1 hover:text-gray-500">Desk To Dinner</Link></li>
                   <li><Link to="/clothing?search=Summer+Mood" className="block py-1 hover:text-gray-500">Summer Mood SS24</Link></li>
+                  <li><Link to="/clothing?search=Vie+Elegante" className="block py-1 hover:text-gray-500">Vie Elegante FW 23</Link></li>
                 </ul>
               </div>
             </div>
