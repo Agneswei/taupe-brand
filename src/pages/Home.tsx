@@ -7,7 +7,6 @@ import TaupeOnYouPreview from "../components/TaupeOnYouPreview";
 import { products } from "../data/products";
 
 const Home: React.FC = () => {
-  const pickedForYou = products.slice(0, 8); 
 
 const collectionSet1 = [
   {
