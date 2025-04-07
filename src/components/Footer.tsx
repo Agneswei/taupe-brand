@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  // For mobile accordion functionality
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,15 +22,35 @@ const Footer: React.FC = () => {
     }
   };
 
+  const toggleSection = (section: string) => {
+    if (expandedSection === section) {
+      setExpandedSection(null);
+    } else {
+      setExpandedSection(section);
+    }
+  };
+
   return (
     <footer className="bg-white border-t border-gray-200 pt-12 pb-6">
       <div className="max-w-6xl mx-auto px-4">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Shop Column */}
-          <div>
-            <h3 className="text-base font-medium mb-4">Shop</h3>
-            <ul className="space-y-3 text-sm">
+          {/* Shop Column - Accordion on Mobile */}
+          <div className="border-b md:border-b-0 pb-4 md:pb-0">
+            <div 
+              className="flex justify-between items-center mb-4 cursor-pointer md:cursor-default"
+              onClick={() => toggleSection('shop')}
+            >
+              <h3 className="text-base font-medium">Shop</h3>
+              <span className="md:hidden transition-transform duration-200 transform" style={{ 
+                transform: expandedSection === 'shop' ? 'rotate(180deg)' : 'rotate(0deg)'
+              }}>
+                ▼
+              </span>
+            </div>
+            <ul className={`space-y-3 text-sm overflow-hidden transition-all duration-300 md:h-auto ${
+              expandedSection === 'shop' ? 'max-h-80' : 'md:max-h-80 max-h-0'
+            }`}>
               <li><Link to="/clothing" className="hover:underline">Clothing</Link></li>
               <li><Link to="/accessories" className="hover:underline">Accessories</Link></li>
               <li><Link to="/clothing?collection=Bare+Essentials" className="hover:underline">Bare Essentials</Link></li>
@@ -37,10 +59,22 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Help Column */}
-          <div>
-            <h3 className="text-base font-medium mb-4">Help</h3>
-            <ul className="space-y-3 text-sm">
+          {/* Help Column - Accordion on Mobile */}
+          <div className="border-b md:border-b-0 pb-4 md:pb-0">
+            <div 
+              className="flex justify-between items-center mb-4 cursor-pointer md:cursor-default"
+              onClick={() => toggleSection('help')}
+            >
+              <h3 className="text-base font-medium">Help</h3>
+              <span className="md:hidden transition-transform duration-200 transform" style={{ 
+                transform: expandedSection === 'help' ? 'rotate(180deg)' : 'rotate(0deg)'
+              }}>
+                ▼
+              </span>
+            </div>
+            <ul className={`space-y-3 text-sm overflow-hidden transition-all duration-300 md:h-auto ${
+              expandedSection === 'help' ? 'max-h-80' : 'md:max-h-80 max-h-0'
+            }`}>
               <li><Link to="/customer-service" className="hover:underline">Customer Service</Link></li>
               <li><Link to="/shipping-returns" className="hover:underline">Shipping & Returns</Link></li>
               <li><Link to="/size-guide" className="hover:underline">Size Guide</Link></li>
@@ -49,10 +83,22 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* About Column */}
-          <div>
-            <h3 className="text-base font-medium mb-4">About</h3>
-            <ul className="space-y-3 text-sm">
+          {/* About Column - Accordion on Mobile */}
+          <div className="border-b md:border-b-0 pb-4 md:pb-0">
+            <div 
+              className="flex justify-between items-center mb-4 cursor-pointer md:cursor-default"
+              onClick={() => toggleSection('about')}
+            >
+              <h3 className="text-base font-medium">About</h3>
+              <span className="md:hidden transition-transform duration-200 transform" style={{ 
+                transform: expandedSection === 'about' ? 'rotate(180deg)' : 'rotate(0deg)'
+              }}>
+                ▼
+              </span>
+            </div>
+            <ul className={`space-y-3 text-sm overflow-hidden transition-all duration-300 md:h-auto ${
+              expandedSection === 'about' ? 'max-h-80' : 'md:max-h-80 max-h-0'
+            }`}>
               <li><Link to="/about" className="hover:underline">Our Story</Link></li>
               <li><Link to="/sustainability" className="hover:underline">Sustainability</Link></li>
               <li><Link to="/taupe-on-you" className="hover:underline">Taupe on You</Link></li>
@@ -61,8 +107,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Newsletter Column */}
-          {/*}
+          {/* Newsletter Column - Always expanded */}
           <div>
             <h3 className="text-base font-medium mb-4">Stay Connected</h3>
             <p className="text-sm mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
@@ -88,7 +133,6 @@ const Footer: React.FC = () => {
                 <p className="text-green-600 text-xs mt-2">Thank you for subscribing!</p>
               )}
             </form>
-            */}
 
             {/* Social Media Icons */}
             <div className="flex space-x-4">
@@ -107,14 +151,14 @@ const Footer: React.FC = () => {
             <div className="mb-4 md:mb-0">
               <p>&copy; {new Date().getFullYear()} Taupe. All rights reserved.</p>
             </div>
-            <div className="flex flex-wrap justify-center space-x-4">
+            <div className="flex flex-wrap justify-center gap-4">
               <Link to="/privacy-policy" className="hover:text-black">Privacy Policy</Link>
               <Link to="/terms-of-service" className="hover:text-black">Terms of Service</Link>
               <Link to="/accessibility" className="hover:text-black">Accessibility</Link>
             </div>
           </div>
         </div>
-      {/* </div> */}
+      </div>
     </footer>
   );
 };
