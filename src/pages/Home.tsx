@@ -24,7 +24,7 @@ const collectionSet1 = [
 
 const collectionSet2 = [
   {
-    name: "TIcket To Soho FW23",
+    name: "Ticket To Soho FW23",
     image: "/collections/TTS.png",
     query: "Ticket+To+Soho"
   },

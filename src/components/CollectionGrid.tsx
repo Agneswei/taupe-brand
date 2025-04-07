@@ -23,13 +23,16 @@ const CollectionGrid: React.FC<Props> = ({ collections }) => {
           <img
             src={collection.image}
             alt={collection.name}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <h2 className="text-white text-3xl md:text-4xl font-light tracking-wide text-center drop-shadow-lg">
-              {collection.name}
-            </h2>
+          <Link
+            to={`/clothing?collection=${collection.query}`}
+            className="mt-2 inline-block border border-white px-6 py-2 text-white hover:bg-white hover:text-black transition"
+            >
+            {collection.name}
+          </Link>
           </div>
         </Link>
       ))}
