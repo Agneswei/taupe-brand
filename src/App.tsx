@@ -8,6 +8,7 @@ import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import { CartProvider } from './context/CartContext';
 import TaupeOnYou from "./pages/TaupeOnYou";
+import Accessories from "./pages/Accessories";  
 import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
           <Route path="/taupe-on-you" element={<TaupeOnYou />} />
+          <Route path="/accessories" element={<Accessories />} />
 
         </Routes>
       </Router>

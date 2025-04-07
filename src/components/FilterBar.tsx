@@ -6,9 +6,11 @@ type FilterBarProps = {
   selectedSub: string;
   onSelectSub: (sub: string) => void;
   subcategories: string[];
+  categories?: string[]; // Make this prop optional for backward compatibility
 };
 
-const categories = ["All", "Tops", "Bottoms", "Dresses", "Outerwear", "Sets"];
+// Default categories for clothing (for backward compatibility)
+const defaultCategories = ["All", "Tops", "Bottoms", "Dresses", "Outerwear", "Sets"];
 
 const FilterBar: React.FC<FilterBarProps> = ({
   selectedCategory,
@@ -16,6 +18,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
   selectedSub,
   onSelectSub,
   subcategories,
+  categories = defaultCategories, // Use provided categories or fall back to defaults
 }) => {
   return (
     <div className="space-y-4 mb-10">

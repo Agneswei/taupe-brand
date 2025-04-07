@@ -234,6 +234,20 @@ export type Product = {
       },
       collection: "Bare Essentials",
     },
+    {
+      name: "Velvet Box Bag",
+      image: "/clothing/bags/velvetGold.png",
+      price: 1790,
+      category: "Accessories",
+      subcategory: "Bags",      
+      variants: {
+        colors: [
+          { name: "Golden Brown", code: "#958258", image: "/clothing/bags/velvetGold.png" },
+          { name: "Brown", code: "#6d4e1d", image: "/clothing/bags/velvetBrown.png" },
+          { name: "Black", code: "#000000", image: "/clothing/bags/velvetBlack.png" },        
+        ],
+      },
+    },
   ];
   
 
