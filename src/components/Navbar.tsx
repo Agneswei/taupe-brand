@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 // SVG for Search Icon 
 const SearchIconSVG = () => (
@@ -39,6 +40,7 @@ const CartIconSVG = () => (
 );
 
 const Navbar: React.FC = () => {
+  const { cart } = useCart();
   const [showClothingDropdown, setShowClothingDropdown] = useState(false);
   const [showAccessoriesDropdown, setShowAccessoriesDropdown] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -211,12 +213,21 @@ const Navbar: React.FC = () => {
         >
           <SearchIconSVG />
         </button>
-        <button 
-          title="Cart" 
+        
+        {/* Cart Button with Item Count */}
+        <Link 
+          to="/cart" 
           className="relative hover:opacity-70 transition"
+          title="Cart"
         >
           <CartIconSVG />
-        </button>
+          {cart.totalItems > 0 && (
+            <span className="absolute -top-2 -right-2 bg-black text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+              {cart.totalItems}
+            </span>
+          )}
+        </Link>
+        
         <button className="text-xs underline">Sign In</button>
       </div>
 

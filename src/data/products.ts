@@ -42,7 +42,9 @@ export type Product = {
           { name: "Cream", code: "#f1ead6", image: "/clothing/lenacream.png" },
         ],
         sizes: ["XS", "S", "M", "L"] 
-      } 
+      },
+      collection: "Bare Essentials",
+
     },
     {
       name: "Elisa Super Soft Sweater",
@@ -56,34 +58,40 @@ export type Product = {
           { name: "Black", code: "#000000", image: "/clothing/elisablack.png" },
         ],
         sizes: ["XS", "S", "M", "L"] 
-      }
+      },
+      collection: "Bare Essentials",
     },
     {
       name: "Mira Cardigan",
       image: "/clothing/mira.png",
       price: 1390,
       category: "Tops",
-      subcategory: "Cardigans | Sweaters"
+      subcategory: "Cardigans | Sweaters",
+      collection: "Bare Essentials",
     },
     {
       name: "Be That Light T-Shirt",
       image: "/clothing/btl.png",
       price: 1390,
       category: "Tops",
-      subcategory: "T-Shirts"    },
+      subcategory: "T-Shirts",
+      collection: "Bare Essentials",  
+    },
     {
       name: "Greta Wide Leg Pants",
       image: "/clothing/gretawhite.png",
       price: 1690,
       category: "Bottoms",
-      subcategory: "Pants"
+      subcategory: "Pants",
+      collection: "Bare Essentials",
     },
     {
       name: "Evelyn Straight Leg Pants",
       image: "/clothing/evelyn.png",
       price: 1390,
       category: "Bottoms",
-      subcategory: "Pants"
+      subcategory: "Pants",
+      collection: "Bare Essentials",
     },
     {
       name: "Gina Shorts",
@@ -97,7 +105,8 @@ export type Product = {
           { name: "White", code: "#ffffff", image: "/clothing/ginawhite.png" },
         ],
         sizes: ["XS", "S", "M", "L"] 
-      }
+      },
+      collection: "Vie Elegante",
     },
     {
       name: "Margaux Set",
@@ -111,7 +120,8 @@ export type Product = {
           { name: "Ivory", code: "#ecebe7", image: "/clothing/margauxivory.png" },
         ],
         sizes: ["S", "M"] 
-      }
+      },
+      collection: "Vie Elegante",
     },
   ];
   

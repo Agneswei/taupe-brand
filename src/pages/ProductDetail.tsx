@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { products } from "../data/products";
+import { useCart } from "../context/CartContext";
 
 // Step 1: Update your Product type to include variant information
 // This would go in your src/data/products.ts file
@@ -11,8 +12,8 @@ type ProductColor = {
 }
 
 type ProductVariant = {
-  colors: ProductColor[];
-  sizes: string[];
+  colors?: ProductColor[];
+  sizes?: string[];
 }
 
 // Extend your existing product type
@@ -67,6 +68,7 @@ const getProductWithVariants = (product: any): ExtendedProduct => {
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   
   // Initialize with default values
   const [product, setProduct] = useState<ExtendedProduct | null>(null);
@@ -76,6 +78,8 @@ const ProductDetail: React.FC = () => {
   const [isSizeError, setIsSizeError] = useState(false);
   const [allImages, setAllImages] = useState<string[]>([]);
   const [hasTrendingColors, setHasTrendingColors] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   // Set up the product data once the component mounts
   useEffect(() => {
@@ -87,10 +91,21 @@ const ProductDetail: React.FC = () => {
       setProduct(productWithVariants);
       
       if (productWithVariants.variants) {
-        const variantImages = productWithVariants.variants.colors.map(color => color.image);
+        const variantImages = productWithVariants.variants.colors ? 
+          productWithVariants.variants.colors.map(color => color.image) : 
+          [productWithVariants.image];
+          
         setAllImages(variantImages);
-        setSelectedColor(productWithVariants.variants.colors[0]);
-        setHasTrendingColors(productWithVariants.variants.colors.length >= 2);
+        
+        if (productWithVariants.variants.colors && productWithVariants.variants.colors.length > 0) {
+          setSelectedColor(productWithVariants.variants.colors[0]);
+        }
+        
+        setHasTrendingColors(
+          productWithVariants.variants.colors ? 
+          productWithVariants.variants.colors.length >= 2 : 
+          false
+        );
       }
     }
   }, [id]);
@@ -128,12 +143,26 @@ const ProductDetail: React.FC = () => {
       return;
     }
     
-    // Here you would typically add the product to your cart state
-    // For now, we'll just navigate to a hypothetical cart page
+    // Add the product to the cart
+    addToCart(
+      product, 
+      selectedSize, 
+      quantity, 
+      selectedColor ? selectedColor.name : undefined
+    );
+    
+    // Show success message briefly
+    setAddedToCart(true);
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 3000);
+  };
+
+  const handleGoToCart = () => {
     navigate("/cart");
   };
 
-  // Format the price to display cents properly
+  // Format the price to display dollars correctly
   const formatPrice = (price: number) => {
     return (price / 100).toFixed(2);
   };
@@ -240,7 +269,7 @@ const ProductDetail: React.FC = () => {
             <div className="mb-8">
               <h2 className="font-medium mb-3">Trending Colours</h2>
               <div className="flex flex-wrap gap-2">
-                {colors.slice(0, 2).map((color) => (
+                {colors && colors.slice(0, 2).map((color) => (
                   <div 
                     key={color.name}
                     className="w-12 h-12 rounded-full border overflow-hidden"
@@ -252,7 +281,7 @@ const ProductDetail: React.FC = () => {
           )}
 
           {/* Color Options - only show if there are multiple colors */}
-          {colors.length > 1 && (
+          {colors && colors.length > 1 && (
             <div className="mb-8">
               <div className="flex justify-between items-center mb-3">
                 <h2 className="font-medium">Colour</h2>
@@ -281,7 +310,7 @@ const ProductDetail: React.FC = () => {
               <button className="text-sm underline">Size Guide</button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {sizes.map((size) => (
+              {sizes && sizes.map((size) => (
                 <button
                   key={size}
                   className={`px-4 py-2 border text-sm min-w-[3rem] transition ${
@@ -309,6 +338,19 @@ const ProductDetail: React.FC = () => {
               Size sold out? Select size to get notified
             </button>
           </div>
+
+          {/* Success Message */}
+          {addedToCart && (
+            <div className="bg-green-50 text-green-800 p-3 mb-4 flex justify-between items-center">
+              <span>Added to cart!</span>
+              <button 
+                onClick={handleGoToCart}
+                className="underline"
+              >
+                View Cart
+              </button>
+            </div>
+          )}
 
           {/* Add to Bag Button */}
           <button
