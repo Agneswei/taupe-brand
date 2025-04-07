@@ -4,7 +4,6 @@ import { products } from "../data/products";
 import ProductCard from "../components/ProductCard";
 import FilterBar from "../components/FilterBar";
 
-
 const Clothing: React.FC = () => {
   const [searchParams] = useSearchParams();
   const collectionParam = searchParams.get("collection");
@@ -16,9 +15,9 @@ const Clothing: React.FC = () => {
   const [subcat, setSubcat] = useState("All");
   const [searchQuery, setSearchQuery] = useState(searchParam || "");
 
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Update filters when URL params change
   useEffect(() => {
@@ -42,28 +41,41 @@ const Clothing: React.FC = () => {
   const filteredProducts = products.filter((product) => {
     const matchesCategory = category === "All" || product.category === category;
     const matchesSubcategory = subcat === "All" || product.subcategory === subcat;
-    const matchesCollection = !collectionParam || product.collection === collectionParam;
+    
+    // Handle collection display
+    let matchesCollection = true;
+    if (collectionParam) {
+      // For collections in the URL, match by the collection name
+      matchesCollection = product.collection === collectionParam.replace(/\+/g, " ");
+    }
+
     const matchesSearch =
       !searchQuery ||
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (product.subcategory && product.subcategory.toLowerCase().includes(searchQuery.toLowerCase()));
+      (product.subcategory && product.subcategory.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (product.collection && product.collection.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return matchesCategory && matchesSubcategory && matchesCollection && matchesSearch;
   });
 
+  // Get page title based on parameters
+  const getPageTitle = () => {
+    if (collectionParam) {
+      return `${collectionParam.replace(/\+/g, " ")}`;
+    } else if (category !== "All") {
+      return subcat !== "All" ? `${category} - ${subcat}` : category;
+    } else {
+      return "All Clothing";
+    }
+  };
+
   return (
     <div className="px-10 py-10">
-      <h1 className="text-3xl font-light mb-6">
-        {collectionParam
-          ? `Collection: ${collectionParam}`
-          : category !== "All"
-          ? category
-          : "All Clothing"}
-        {subcat !== "All" && ` - ${subcat}`}
-      </h1>
+      <h1 className="text-3xl font-light mb-6">{getPageTitle()}</h1>
 
-      {searchQuery && (
+      {/* Only show search results message when explicitly searching, not for collections */}
+      {searchParam && !collectionParam && (
         <div className="mb-4 text-sm">
           <p>
             Search results for: <span className="font-medium">{searchQuery}</span>

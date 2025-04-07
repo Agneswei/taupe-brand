@@ -14,7 +14,7 @@ const collections: CollectionItem[] = [
     query: "Bare+Essentials"
   },
   {
-    name: "Ticket To SOho",
+    name: "Ticket To Soho",
     image: "/collections/TTS.png",
     query: "Ticket+To+Soho"
   },
