@@ -9,24 +9,34 @@ type Props = {
 
 const ProductScroller: React.FC<Props> = ({ title, products }) => {
   return (
-    <div className="px-6 py-10">
-      <h2 className="text-xl font-light mb-4">{title}</h2>
-      <div className="flex overflow-x-auto space-x-6 pb-4">
-        {products.map((product) => (
+    <div className="w-full px-4 md:px-0 py-10">
+      <h2 className="text-xl font-light mb-6 px-2 md:px-6">{title}</h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
+        {/* choose first 4 products in my array product.ts*/}
+        {products.slice(0,4).map((product) => (
           <Link
             key={product.id}
             to={`/product/${product.id}`}
-            className="min-w-[180px] max-w-[180px] shrink-0"
+            className="w-full"
           >
-            <div className="aspect-[2/3] bg-gray-100 overflow-hidden rounded">
+            <div className="aspect-[3/4] w-full overflow-hidden">
+            <div className="relative w-full h-full">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover transition-opacity duration-300 absolute inset-0 z-10"
               />
+              {product.variants?.colors?.[1]?.image && (
+                <img
+                  src={product.variants.colors[1].image}
+                  alt={`${product.name} hover`}
+                  className="w-full h-full object-cover transition-opacity duration-300 opacity-0 hover:opacity-100 absolute inset-0 z-20"
+                />
+              )}
             </div>
-            <div className="mt-2 text-sm text-gray-700">
-              <p className="truncate">{product.name}</p>
+            </div>
+            <div className="w-full bg-white px-4 py-3 text-sm">
+            <p className="truncate text-black">{product.name}</p>
               <p className="text-gray-500">${product.price}</p>
             </div>
           </Link>
@@ -35,5 +45,6 @@ const ProductScroller: React.FC<Props> = ({ title, products }) => {
     </div>
   );
 };
+
 
 export default ProductScroller;

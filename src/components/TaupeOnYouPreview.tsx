@@ -21,7 +21,7 @@ const TaupeOnYouPreview: React.FC = () => {
         to="/taupe-on-you"
         className="inline-block mb-6 text-xl font-light hover:text-gray-600 transition"
       >
-        Taupe on You
+        #WearTaupe
       </Link>
 
       <div className="grid grid-cols-2 gap-4">

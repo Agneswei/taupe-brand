@@ -9,6 +9,29 @@ import { products } from "../data/products";
 const Home: React.FC = () => {
   const pickedForYou = products.slice(0, 8); 
 
+const collectionSet1 = [
+  {
+    name: "Summer Mood SS24",
+    image: "/collections/summermood.png",
+    query: "Summer+Mood"
+  },
+  {
+    name: "Vie Elegante FW 23",
+    image: "/collections/vieelegante.png",
+    query: "Vie+Elegante"
+  },
+];
+
+const collectionSet2 = [
+  {
+    name: "TIcket To Soho FW23",
+    image: "/collections/TTS.png",
+    query: "Ticket+To+Soho"
+  },
+ 
+];
+
+
   return (
     <div>
       {/* Hero Section - Now just the hero, not containing other content */}
@@ -35,12 +58,22 @@ const Home: React.FC = () => {
 
       {/* Rest of content - Now outside the hero section */}
       <div>
-        <CollectionGrid />
-        <ProductScroller title="Picked Just For You" products={pickedForYou} />
-        <TaupeOnYouPreview />
-      </div>
+  <CollectionGrid collections={collectionSet1} />
+  <ProductScroller title="Latest Drop" products={products} />
+</div>
+
+{/* Full-width second collection grid OUTSIDE the default container */}
+<div className="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+  <CollectionGrid collections={collectionSet2} />
+</div>
+
+<div>
+  <TaupeOnYouPreview />
+</div>
+
     </div>
   );
 };
 
 export default Home;
+

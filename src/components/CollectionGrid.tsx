@@ -7,33 +7,13 @@ type CollectionItem = {
   query: string;
 };
 
-const collections: CollectionItem[] = [
-  {
-    name: "Bare Essentials",
-    image: "/collections/bareessentials.png",
-    query: "Bare+Essentials"
-  },
-  {
-    name: "Ticket To Soho",
-    image: "/collections/TTS.png",
-    query: "Ticket+To+Soho"
-  },
+type Props = {
+  collections: CollectionItem[];
+};
 
-  {
-    name: "Summer Mood SS24",
-    image: "/collections/summermood.png",
-    query: "Summer+Mood"
-  },
-  {
-    name: "Vie Elegante FW 23",
-    image: "/collections/vieelegante.png",
-    query: "Vie+Elegante"
-  },
-];
-
-const CollectionGrid: React.FC = () => {
+const CollectionGrid: React.FC<Props> = ({ collections }) => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-6 py-10">
+    <div className="grid grid-cols-1 md:grid-cols-">
       {collections.map((collection) => (
         <Link
           key={collection.name}

@@ -64,11 +64,11 @@ const TaupeOnYou: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-light text-center mb-6">
-        Taupe on You — A page dedicated to how good we look together.
+        #WearTaupe — A page dedicated to how good we look together.
       </h1>
       
       <p className="text-center mb-8 text-gray-600 max-w-2xl mx-auto">
-        See how our community styles their favorite TAUPE pieces. Tag us with #TaupeOnYou 
+        See how our community styles their favorite TAUPE pieces. Tag us with #WearTaupe 
         on Instagram for a chance to be featured.
       </p>
 
