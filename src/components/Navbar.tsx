@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import CurrencySelector from './CurrencySelector'; // Import CurrencySelector
 
 // SVG for Search Icon 
 const SearchIconSVG = () => (
@@ -292,6 +293,9 @@ const Navbar: React.FC = () => {
 
       {/* Right - Icons */}
       <div className="flex gap-4 items-center z-10">
+        {/* Currency Selector - Added here */}
+        <CurrencySelector />
+        
         {/* Search Button */}
         <button 
           title="Search" 
@@ -330,6 +334,12 @@ const Navbar: React.FC = () => {
           </button>
           <div className="flex flex-col h-full">
             <div className="flex-1">
+              {/* Currency Selector in Mobile Menu */}
+              <div className="mb-6 flex justify-between items-center">
+                <span className="text-gray-500 text-sm uppercase">Currency</span>
+                <CurrencySelector />
+              </div>
+            
               {/* Mobile Navigation */}
               <ul className="text-xl space-y-6">
                 {/* Clothing */}
@@ -361,7 +371,7 @@ const Navbar: React.FC = () => {
                       <div>
                         <h4 className="font-medium mb-2 text-gray-500 text-sm uppercase">Collections</h4>
                         <ul className="space-y-3">
-                        <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick}>All Collections </Link></li>
+                          <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick}>All Collections </Link></li>
                           <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick}>Bare Essentials</Link></li>
                           <li><Link to="/clothing?search=Romance+Mansion" onClick={handleDropdownLinkClick}>Romance Mansion</Link></li>
                           <li><Link to="/clothing?search=The+Tailored" onClick={handleDropdownLinkClick}>The Tailored</Link></li>
@@ -370,7 +380,6 @@ const Navbar: React.FC = () => {
                           <li><Link to="/clothing?search=Vie+Elegante" onClick={handleDropdownLinkClick}>Vie Elegante</Link></li>
                           <li><Link to="/clothing?search=Ticket+To+Soho" onClick={handleDropdownLinkClick}>Ticket To Soho</Link></li>
                           <li><Link to="/clothing?search=Uncomplicated" onClick={handleDropdownLinkClick}>Uncomplicated</Link></li>
-
                         </ul>
                       </div>
                     </div>

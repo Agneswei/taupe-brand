@@ -1,19 +1,12 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext'; // Import useCurrency
 
 const Cart: React.FC = () => {
   const { cart, updateQuantity, removeFromCart } = useCart();
+  const { formatPrice } = useCurrency(); // Use the formatPrice function from context
   const navigate = useNavigate();
-
-  // Format price from cents to dollars
-  const formatPrice = (price: number) => {
-    return `฿${price.toLocaleString("th-TH")}`;
-  };
-  
-  const formatPriceWithCurrency = (price: number) => {
-    return formatPrice(price);
-  };
 
   // Handle quantity change
   const handleQuantityChange = (id: number, size: string, newQuantity: number) => {
@@ -97,7 +90,7 @@ const Cart: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    <p className="font-medium">{formatPriceWithCurrency(item.price * item.quantity)}</p>
+                    <p className="font-medium">{formatPrice(item.price * item.quantity)}</p>
                     
                     {/* Quantity Selector */}
                     <div className="flex items-center justify-end mt-2">
@@ -136,7 +129,7 @@ const Cart: React.FC = () => {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
                   <span>Total</span>
-                  <span>{formatPriceWithCurrency(cart.totalPrice)}</span>
+                  <span>{formatPrice(cart.totalPrice)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Shipping estimate</span>
@@ -147,7 +140,7 @@ const Cart: React.FC = () => {
               <div className="border-t border-gray-200 pt-3 mb-6">
                 <div className="flex justify-between font-medium">
                   <span>Order Total</span>
-                  <span>{formatPriceWithCurrency(cart.totalPrice)}</span>
+                  <span>{formatPrice(cart.totalPrice)}</span>
                 </div>
               </div>
 

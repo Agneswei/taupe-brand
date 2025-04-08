@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
+import { useCurrency } from "../context/CurrencyContext"; // Import useCurrency
 
 type ProductColor = {
   name: string;
@@ -65,6 +66,7 @@ const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { formatPrice } = useCurrency(); // Use the formatPrice function from context
   
   const [product, setProduct] = useState<ExtendedProduct | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -181,10 +183,6 @@ const ProductDetail: React.FC = () => {
 
   const handleGoToCart = () => {
     navigate("/cart");
-  };
-
-  const formatPrice = (price: number) => {
-    return `฿${price.toLocaleString("th-TH")}`;
   };
 
   if (!product.variants) {
