@@ -3,11 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 
-
 type ProductColor = {
   name: string;
   code: string;
   image: string;
+  additionalImages?: string[]; // New field for additional images
 }
 
 type ProductVariant = {
@@ -23,6 +23,7 @@ type ExtendedProduct = {
   category: string;
   subcategory?: string;
   variants?: ProductVariant;
+  additionalImages?: string[]; // Product-level additional images
 };
 
 const getProductWithVariants = (product: any): ExtendedProduct => {
@@ -84,14 +85,30 @@ const ProductDetail: React.FC = () => {
       setProduct(productWithVariants);
       
       if (productWithVariants.variants) {
-        const variantImages = productWithVariants.variants.colors ? 
-          productWithVariants.variants.colors.map(color => color.image) : 
-          [productWithVariants.image];
-          
-        setAllImages(variantImages);
-        
+        // Initialize with the first color's images
         if (productWithVariants.variants.colors && productWithVariants.variants.colors.length > 0) {
-          setSelectedColor(productWithVariants.variants.colors[0]);
+          const firstColor = productWithVariants.variants.colors[0];
+          setSelectedColor(firstColor);
+          
+          // Combine main image with additional images for this color
+          const colorImages = [firstColor.image];
+          if (firstColor.additionalImages) {
+            colorImages.push(...firstColor.additionalImages);
+          }
+          
+          // Add product-level additional images if present
+          if (productWithVariants.additionalImages) {
+            colorImages.push(...productWithVariants.additionalImages);
+          }
+          
+          setAllImages(colorImages);
+        } else {
+          // Fallback to product image if no colors
+          const productImages = [productWithVariants.image];
+          if (productWithVariants.additionalImages) {
+            productImages.push(...productWithVariants.additionalImages);
+          }
+          setAllImages(productImages);
         }
         
         setHasTrendingColors(
@@ -103,15 +120,26 @@ const ProductDetail: React.FC = () => {
     }
   }, [id]);
 
-  // Update the image when a color is selected
+  // Update the image array when a color is selected
   useEffect(() => {
-    if (selectedColor) {
-      const colorImageIndex = allImages.indexOf(selectedColor.image);
-      if (colorImageIndex !== -1) {
-        setCurrentImageIndex(colorImageIndex);
+    if (selectedColor && product) {
+      // Create a new array of images starting with the main image for this color
+      const colorImages = [selectedColor.image];
+      
+      // Add any additional images specific to this color
+      if (selectedColor.additionalImages) {
+        colorImages.push(...selectedColor.additionalImages);
       }
+      
+      // Add product-level additional images if present
+      if (product.additionalImages) {
+        colorImages.push(...product.additionalImages);
+      }
+      
+      setAllImages(colorImages);
+      setCurrentImageIndex(0); // Reset to first image when color changes
     }
-  }, [selectedColor, allImages]);
+  }, [selectedColor, product]);
 
   // If product is not found or still loading
   if (!product) {
@@ -227,6 +255,28 @@ const ProductDetail: React.FC = () => {
               </svg>
             </button>
           </div>
+          
+          {/* Thumbnail row for additional images */}
+          {allImages.length > 1 && (
+            <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
+              {allImages.map((img, index) => (
+                <button
+                  key={index}
+                  className={`h-24 w-20 flex-shrink-0 border-2 transition-all ${
+                    index === currentImageIndex ? "border-black" : "border-transparent"
+                  }`}
+                  onClick={() => setCurrentImageIndex(index)}
+                  aria-label={`View image ${index + 1}`}
+                >
+                  <img 
+                    src={img} 
+                    alt={`${product.name} view ${index + 1}`} 
+                    className="w-full h-full object-cover" 
+                  />
+                </button>
+              ))}
+            </div>
+          )}
           
           {/* Image Pagination Dots - only show if multiple images */}
           {allImages.length > 1 && (

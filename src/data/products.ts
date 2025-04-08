@@ -1,12 +1,14 @@
+
 export type Product = {
     id: number;
     name: string;
     image: string;
+    additionalImages?: string[];
     price: number;
     category: string;
     subcategory?: string;
     variants?: {
-      colors?: { name: string; code: string; image: string }[];
+      colors?: { name: string; code: string; image: string; additionalImages?: string[]; }[];
       sizes?: string[];
     };
     collection?: string;
@@ -15,14 +17,21 @@ export type Product = {
   const rawProducts = [
     {
       name: "Tricia Breathable Knit Tank",
-      image: "/clothing/triciablack.png",
+      image: "/clothing/BE/triciaBlack.png",
+      
       price: 990,
       category: "Tops",
       subcategory: "Tank Tops",
       variants: {
         colors: [
-          { name: "Black", code: "#000000", image: "/clothing/triciablack.png" },
-          { name: "Gray", code: "#bcbcbc", image: "/clothing/triciagray.png" },
+          { name: "Black", code: "#000000", image: "/clothing/BE/triciaBlack.png",
+            additionalImages: ["/clothing/BE/triciaB1.png", "/clothing/BE/triciaB2.png"]
+            
+           },
+          { name: "Gray", code: "#bcbcbc", image: "/clothing/BE/triciagray.png" },
+          { name: "White", code: "#ffffff", image: "/clothing/BE/triciaWhite.png",
+            additionalImages: ["/clothing/BE/triciaW1.png", "/clothing/BE/triciaW2.png"]
+           },
         ],
         sizes: ["XS", "S", "M", "L"] 
       },
@@ -105,7 +114,7 @@ export type Product = {
         ],
         sizes: ["XS", "S", "M", "L"] 
       },
-      collection: "Vie Elegante",
+      collection: "Uncomplicated",
     },
     {
       name: "Margaux Set",

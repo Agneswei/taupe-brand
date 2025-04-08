@@ -369,6 +369,8 @@ const Navbar: React.FC = () => {
                           <li><Link to="/clothing?search=Summer+Mood" onClick={handleDropdownLinkClick}>Summer Mood</Link></li>
                           <li><Link to="/clothing?search=Vie+Elegante" onClick={handleDropdownLinkClick}>Vie Elegante</Link></li>
                           <li><Link to="/clothing?search=Ticket+To+Soho" onClick={handleDropdownLinkClick}>Ticket To Soho</Link></li>
+                          <li><Link to="/clothing?search=Uncomplicated" onClick={handleDropdownLinkClick}>Uncomplicated</Link></li>
+
                         </ul>
                       </div>
                     </div>
