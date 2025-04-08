@@ -53,9 +53,13 @@ const Footer: React.FC = () => {
             }`}>
               <li><Link to="/clothing" className="hover:underline">Clothing</Link></li>
               <li><Link to="/accessories" className="hover:underline">Accessories</Link></li>
-              <li><Link to="/clothing?collection=Bare+Essentials" className="hover:underline">Bare Essentials</Link></li>
-              <li><Link to="/clothing?collection=Summer+Mood" className="hover:underline">Summer Mood</Link></li>
-              <li><Link to="/clothing?collection=Vie+Elegante" className="hover:underline">Vie Elegante</Link></li>
+              <li><Link to="/clothing?collection=Be+That+Light" className="hover:underline">Be That Light</Link></li>
+              <li><Link to="/clothing?collection=Bare+Essentials" className="hover:underline">Bare Essentials SS25</Link></li>
+              <li><Link to="/clothing?collection=Dek+To+Dinner" className="hover:underline">Desk To Diner</Link></li>
+              <li><Link to="/clothing?collection=Summer+Mood" className="hover:underline">Summer Mood SS24</Link></li>
+              <li><Link to="/clothing?collection=The+Tailored" className="hover:underline">The Tailored FW24</Link></li>
+              <li><Link to="/clothing?collection=Vie+Elegante" className="hover:underline">The Tailored FW24</Link></li>
+              <li><Link to="/clothing?collection=Vie+Elegante" className="hover:underline">Vie Elegante FW23</Link></li>
             </ul>
           </div>
 

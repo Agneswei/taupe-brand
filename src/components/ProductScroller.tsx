@@ -1,13 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Product } from "../data/products";
+import { useCurrency } from "../context/CurrencyContext";
 
 type Props = {
   title: string;
   products: Product[];
 };
 
+
+
 const ProductScroller: React.FC<Props> = ({ title, products }) => {
+  const { formatPrice } = useCurrency();
   return (
     <div className="w-full px-4 md:px-0 py-10">
       <h2 className="text-xl font-light mb-6 px-2 md:px-6">{title}</h2>
@@ -37,7 +41,7 @@ const ProductScroller: React.FC<Props> = ({ title, products }) => {
             </div>
             <div className="w-full bg-white px-4 py-3 text-sm">
             <p className="truncate text-black">{product.name}</p>
-              <p className="text-gray-500">${product.price}</p>
+              <p className="text-gray-500">{formatPrice(product.price)}</p>
             </div>
           </Link>
         ))}

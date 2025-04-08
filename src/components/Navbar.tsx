@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import CurrencySelector from './CurrencySelector'; // Import CurrencySelector
+import CurrencySelector from './CurrencySelector';
 
 // SVG for Search Icon 
 const SearchIconSVG = () => (
@@ -242,7 +242,7 @@ const Navbar: React.FC = () => {
                   <li><Link to="/clothing?search=Desk+To+Dinner" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Desk To Dinner</Link></li>
                   <li><Link to="/clothing?search=Summer+Mood" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Summer Mood SS24</Link></li>
                   <li><Link to="/clothing?search=The+Tailored" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">The Tailored FW24</Link></li>
-                  <li><Link to="/clothing?search=Vie+Elegante" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Vie Elegante FW 23</Link></li>
+                  <li><Link to="/clothing?search=Vie+Elegante" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Vie Elegante FW23</Link></li>
                 </ul>
               </div>
             </div>
@@ -269,9 +269,8 @@ const Navbar: React.FC = () => {
                 <ul className="space-y-1">
                   <li><Link to="/accessories" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">All Accessories</Link></li>
                   <li><Link to="/accessories?category=Bags" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Bags</Link></li>
-                  <li><Link to="/accessories?category=Hats" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Hats</Link></li>
-                  <li><Link to="/accessories?category=Wallets" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Wallets</Link></li>
-                  <li><Link to="/accessories?category=Scarves" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Scarves</Link></li>
+                  <li><Link to="/accessories?category=Hats" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Belts</Link></li>
+
                 </ul>
               </div>
               <div>
@@ -371,15 +370,12 @@ const Navbar: React.FC = () => {
                       <div>
                         <h4 className="font-medium mb-2 text-gray-500 text-sm uppercase">Collections</h4>
                         <ul className="space-y-3">
-                          <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick}>All Collections </Link></li>
-                          <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick}>Bare Essentials</Link></li>
-                          <li><Link to="/clothing?search=Romance+Mansion" onClick={handleDropdownLinkClick}>Romance Mansion</Link></li>
-                          <li><Link to="/clothing?search=The+Tailored" onClick={handleDropdownLinkClick}>The Tailored</Link></li>
-                          <li><Link to="/clothing?search=Glamfidence" onClick={handleDropdownLinkClick}>Glamfidence</Link></li>
-                          <li><Link to="/clothing?search=Summer+Mood" onClick={handleDropdownLinkClick}>Summer Mood</Link></li>
-                          <li><Link to="/clothing?search=Vie+Elegante" onClick={handleDropdownLinkClick}>Vie Elegante</Link></li>
-                          <li><Link to="/clothing?search=Ticket+To+Soho" onClick={handleDropdownLinkClick}>Ticket To Soho</Link></li>
-                          <li><Link to="/clothing?search=Uncomplicated" onClick={handleDropdownLinkClick}>Uncomplicated</Link></li>
+                        <li><Link to="/clothing?search=Be+That+Light" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Be That Light</Link></li>
+                  <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Bare Essentials SS25</Link></li>
+                  <li><Link to="/clothing?search=Desk+To+Dinner" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Desk To Dinner</Link></li>
+                  <li><Link to="/clothing?search=Summer+Mood" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Summer Mood SS24</Link></li>
+                  <li><Link to="/clothing?search=The+Tailored" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">The Tailored FW24</Link></li>
+                  <li><Link to="/clothing?search=Vie+Elegante" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Vie Elegante FW 23</Link></li>
                         </ul>
                       </div>
                     </div>
@@ -405,9 +401,8 @@ const Navbar: React.FC = () => {
                         <ul className="space-y-3">
                           <li><Link to="/accessories" onClick={handleDropdownLinkClick}>All Accessories</Link></li>
                           <li><Link to="/accessories?category=Bags" onClick={handleDropdownLinkClick}>Bags</Link></li>
-                          <li><Link to="/accessories?category=Hats" onClick={handleDropdownLinkClick}>Hats</Link></li>
-                          <li><Link to="/accessories?category=Wallets" onClick={handleDropdownLinkClick}>Wallets</Link></li>
-                          <li><Link to="/accessories?category=Scarves" onClick={handleDropdownLinkClick}>Scarves</Link></li>
+                          <li><Link to="/accessories?category=Hats" onClick={handleDropdownLinkClick}>Belts</Link></li>
+             
                         </ul>
                       </div>
                       
