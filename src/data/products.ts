@@ -138,6 +138,21 @@ export type Product = {
       collection: "The Tailored",
     },
     {
+      name: "Audrey Top",
+      image: "/clothing/TT/audrey.jpg",
+      additionalImages: ["/clothing/TT/audrey1.jpg", "/clothing/TT/audrey2.jpg", "/clothing/TT/audrey3.jpg"],
+      price: 1290,
+      category: "Tops",
+      variants: {
+        colors: [
+          { name: "Ivory", code: "#ecebe7", image: "/clothing/TT/audrey.jpg",
+           },
+        ],
+        sizes: ["Free Size"] 
+      },
+      collection: "The Tailored",
+    },
+    {
       name: "Dahlia Set",
       image: "/clothing/dahlia.png",
       price: 2590,
