@@ -118,14 +118,20 @@ export type Product = {
     },
     {
       name: "Margaux Set",
-      image: "/clothing/margauxgray.png",
+      image: "/clothing/TT/margauxGray.jpg",
       price: 2590,
       category: "Sets",
       variants: {
         colors: [
-          { name: "Gray", code: "#dbd4ca", image: "/clothing/margauxgray.png" },
-          { name: "Ivory", code: "#ecebe7", image: "/clothing/margauxivory.png" },
-          { name: "Brown", code: "#6d4e1d", image: "/clothing/margauxbrown.png" },
+          { name: "Gray", code: "#dbd4ca", image: "/clothing/TT/margauxGray.jpg",
+            additionalImages: ["/clothing/margauxG1.jpg", "/clothing/margauxG2.jpg"]
+           },
+          { name: "Ivory", code: "#ecebe7", image: "/clothing/TT/margauxIvory.jpg",
+            additionalImages: ["/clothing/TT/margauxI1.jpg", "/clothing/TT/margauxI2.jpg"]
+           },
+          { name: "Brown", code: "#6d4e1d", image: "/clothing/TT/margauxBrown.jpg",
+            additionalImages: ["/clothing/TT/margauxB1.jpg", "/clothing/TT/margauxB2.jpg", "/clothing/TT/margauxB3.jpg", "/clothing/TT/margauxB4.jpg"]
+           },
         ],
         sizes: ["S", "M"] 
       },
