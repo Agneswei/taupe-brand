@@ -254,6 +254,25 @@ export type Product = {
       collection: "Romance Mansion",
     },
     {
+      name: "Alicia Knit Set",
+      image: "/clothing/RM/alicia.jpg",
+      additionalImages: ["/clothing/RM/alicia1.jpg", "/clothing/RM/alicia2.jpg"],
+      price: 1490,
+      category: "Sets",
+      variants: {
+        colors: [
+          { name: "White", code: "#ffffff", image: "/clothing/RM/aliciaWhite.jpg",
+            additionalImages: ["/clothing/RM/aliciaW1.jpg", "/clothing/RM/aliciaW2.jpg", "/clothing/RM/aliciaW3.jpg", "/clothing/RM/aliciaW4.jpg"]
+          },  
+          { name: "Taupe", code: "#8b7069", image: "/clothing/RM/aliciaTaupe.png"},         
+          { name: "Black", code: "#000000", image: "/clothing/RM/aliciaBlack.png"},         
+       
+        ],
+        sizes: ["Free Size"] 
+      },
+      collection: "Romance Mansion",
+    },
+    {
       name: "Kelly Set",
       image: "/clothing/SM/kelly.png",
       price: 890,
@@ -399,6 +418,18 @@ export type Product = {
         sizes: ["Free Size"] 
       },
       collection: "Vie Elegante",
+    },
+    {
+      name: "Dolce Pleat Pant",
+      image: "/clothing/glam/dolce1.jpg",
+      additionalImages: ["/clothing/glam/dolce2.jpg"],
+      price: 1690,
+      category: "Bottoms",
+      subcategory: "Pants",
+      variants: {
+        sizes: ["S", "M", "L"] 
+      },
+      collection: "Romance Mansion",
     },
   
   ];
