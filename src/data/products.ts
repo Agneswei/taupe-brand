@@ -208,13 +208,19 @@ export type Product = {
     },
     {
       name: "Tiara Dress",
-      image: "/clothing/SM/tiara.png",
+      image: "/clothing/SM/tiaraGreen.jpg",
+      additionalImages: ["/clothing/SM/tiara1.jpg", "/clothing/SM/tiara2.jpg"],
       price: 790,
       category: "Dresses",
       variants: {
         colors: [
-          { name: "Ivory", code: "#ecebe7", image: "/clothing/SM/tiaraIvory.png" },
-          { name: "Green", code: "#8ca382", image: "/clothing/SM/tiaraGreen.png" },
+          { name: "Ivory", code: "#ecebe7", image: "/clothing/SM/tiaraIvory.jpg",
+            additionalImages: ["/clothing/SM/tiaraI1.jpg", "/clothing/SM/tiaraI2.jpg"]
+          },
+          { name: "Green", code: "#8ca382", image: "/clothing/SM/tiaraGreen.jpg",
+            additionalImages: ["/clothing/SM/tiaraG1.jpg", "/clothing/SM/tiaraG2.jpg", "/clothing/SM/tiaraG3.jpg"]
+
+           },
         ],
         sizes: ["Free Size"] 
       },
