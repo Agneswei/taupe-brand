@@ -221,33 +221,46 @@ export type Product = {
     },
     {
       name: "Zoe Wide Leg Pant",
-      image: "/clothing/SM/zoeGray.jpg",
-      additionalImages: ["/clothing/SM/zoeG3.jpg"],
+      image: "/clothing/RM/zoeGray.jpg",
+      additionalImages: ["/clothing/RM/zoeG3.jpg"],
       price: 1890,
       category: "Bottoms",
       subcategory: "Pants",
       variants: {
         colors: [
-          { name: "Gray", code: "#bcbcbc", image: "/clothing/SM/zoeGray.jpg",
-            additionalImages: ["/clothing/SM/zoeG1.jpg", "/clothing/SM/zoeG2.jpg"]
+          { name: "Gray", code: "#bcbcbc", image: "/clothing/RM/zoeGray.jpg",
+            additionalImages: ["/clothing/RM/zoeG1.jpg", "/clothing/RM/zoeG2.jpg"]
           },
-          { name: "Black", code: "#000000", image: "/clothing/SM/zoeBlack.png"}
+          { name: "Black", code: "#000000", image: "/clothing/RM/zoeBlack.png"}
           
         ],
         sizes: ["S", "M"] 
       },
-      collection: "Summer Mood",
+      collection: "Romance Mansion",
     },
     {
       name: "Adele Shirt",
-      image: "/clothing/SM/adele.jpg",
-      additionalImages: ["/clothing/SM/adele1.jpg", "/clothing/SM/adele2.jpg"],
+      image: "/clothing/RM/adele.jpg",
+      additionalImages: ["/clothing/RM/adele1.jpg", "/clothing/RM/adele2.jpg"],
       price: 1590,
       category: "Tops",
       subcategory: "Shirts & Blouses",
       variants: {
         colors: [
-          { name: "White", code: "#ffffff", image: "/clothing/SM/zoeGray.jpg"}         
+          { name: "White", code: "#ffffff", image: "/clothing/RM/zoeGray.jpg"}         
+        ],
+        sizes: ["Free Size"] 
+      },
+      collection: "Romance Mansion",
+    },
+    {
+      name: "Kelly Set",
+      image: "/clothing/SM/kelly.png",
+      price: 890,
+      category: "Sets",
+      variants: {
+        colors: [
+          { name: "Blue", code: "#9fc5e8", image: "/clothing/SM/kelly.png" },
         ],
         sizes: ["Free Size"] 
       },
