@@ -86,7 +86,7 @@ export type Product = {
       subcategory: "T-Shirts",
     },
     {
-      name: "Greta Wide Leg Pants",
+      name: "Greta Wide Leg Pant",
       image: "/clothing/gretawhite.png",
       price: 1690,
       category: "Bottoms",
@@ -94,7 +94,7 @@ export type Product = {
       collection: "Bare Essentials",
     },
     {
-      name: "Evelyn Straight Leg Pants",
+      name: "Evelyn Straight Leg Pant",
       image: "/clothing/evelyn.png",
       price: 1390,
       category: "Bottoms",
@@ -102,7 +102,7 @@ export type Product = {
       collection: "Bare Essentials",
     },
     {
-      name: "Gina Shorts",
+      name: "Gina Short",
       image: "/clothing/ginablack.png",
       price: 790,
       category: "Bottoms",
@@ -179,15 +179,75 @@ export type Product = {
       collection: "Summer Mood",
     },
     {
-      name: "Alie Set",
-      image: "/clothing/SM/allieWhite.png",
+      name: "Allie Set",
+      image: "/clothing/SM/allieWhite.jpg",
+      additionalImages: ["/clothing/SM/allie1.jpg", "/clothing/SM/allie2.jpg"],
       price: 1290,
       category: "Sets",
       variants: {
         colors: [
-          { name: "White", code: "#ffffff", image: "/clothing/SM/allieWhite.png" },
-          { name: "Black", code: "#000000", image: "/clothing/SM/allieBlack.png" },
-          { name: "Beige", code: "#d4bb93", image: "/clothing/SM/allieBeige.png" },
+          { name: "White", code: "#ffffff", image: "/clothing/SM/allieWhite.jpg",
+            additionalImages: ["/clothing/SM/allieW1.jpg", "/clothing/SM/allieW2.jpg", "/clothing/SM/allieW3.jpg"]
+           },
+          { name: "Black", code: "#000000", image: "/clothing/SM/allieBlack.jpg" },
+          { name: "Beige", code: "#d4bb93", image: "/clothing/SM/allieBeige.jpg",
+            additionalImages: ["/clothing/SM/allieB1.jpg"]
+           },
+        ],
+        sizes: ["Free Size"] 
+      },
+      collection: "Summer Mood",
+    },
+    {
+      name: "Weldean Pant",
+      image: "/clothing/SM/weldean.jpg",
+      additionalImages: ["/clothing/SM/weldean1.jpg"],
+      price: 1490,
+      category: "Bottoms",
+      subcategory: "Pants",
+      variants: {
+        colors: [
+          { name: "Beige", code: "#d4bb93", image: "/clothing/SM/weldean.jpg",
+            additionalImages: ["/clothing/SM/weldeanB1.jpg", "/clothing/SM/weldeanB2.jpg"]
+          },
+          { name: "Khaki", code: "#958258", image: "/clothing/SM/weldeanKhaki.jpg",
+            additionalImages: ["/clothing/SM/weldeanK1.jpg"]
+          }
+          
+        ],
+        sizes: ["S", "M", "L", "XL"] 
+      },
+      collection: "Summer Mood",
+    },
+    {
+      name: "Zoe Wide Leg Pant",
+      image: "/clothing/SM/zoeGray.jpg",
+      additionalImages: ["/clothing/SM/zoeG3.jpg"],
+      price: 1890,
+      category: "Bottoms",
+      subcategory: "Pants",
+      variants: {
+        colors: [
+          { name: "Gray", code: "#bcbcbc", image: "/clothing/SM/zoeGray.jpg",
+            additionalImages: ["/clothing/SM/zoeG1.jpg", "/clothing/SM/zoeG2.jpg"]
+          },
+          { name: "Black", code: "#000000", image: "/clothing/SM/zoeBlack.png"}
+          
+        ],
+        sizes: ["S", "M"] 
+      },
+      collection: "Summer Mood",
+    },
+    {
+      name: "Adele Shirt",
+      image: "/clothing/SM/adele.jpg",
+      additionalImages: ["/clothing/SM/adele1.jpg", "/clothing/SM/adele2.jpg"],
+      price: 1590,
+      category: "Tops",
+      subcategory: "Shirts & Blouses",
+      variants: {
+        colors: [
+          { name: "White", code: "#ffffff", image: "/clothing/SM/zoeGray.jpg"}         
         ],
         sizes: ["Free Size"] 
       },
