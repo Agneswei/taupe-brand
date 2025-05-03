@@ -1,4 +1,6 @@
-# 🛍️ Taupe Brand
+![Taupe Brand Screenshot](public/preview.png) 
+
+# Taupe Brand
 
 Taupe Brand is a fully responsive e-commerce website I developed from scratch for a fashion brand looking to scale internationally. It features a clean UI, product filtering, a shopping cart, and Stripe-powered checkout.
 
@@ -6,7 +8,7 @@ Taupe Brand is a fully responsive e-commerce website I developed from scratch fo
 
 ---
 
-## 🚀 Features
+## Features
 
 - 🧭 Responsive navigation with categories
 - 🛍️ Product listing and detail pages
@@ -16,7 +18,7 @@ Taupe Brand is a fully responsive e-commerce website I developed from scratch fo
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - **Frontend:** React, TypeScript, Tailwind CSS
 - **Backend:** Node.js, Express.js
@@ -24,19 +26,13 @@ Taupe Brand is a fully responsive e-commerce website I developed from scratch fo
 
 ---
 
-## 🎯 Purpose
+## Purpose
 
 This project was part of a freelance engagement to help a fashion brand expand its digital presence. I focused on delivering a sleek, fast, and mobile-first experience aligned with industry leaders like Aritzia and Lululemon.
 
 ---
 
-## 📸 Preview
-
-![Taupe Brand Screenshot](public/preview.png) 
-
----
-
-## 🧠 What I Learned
+## What I Learned
 
 - Integrating real-world e-commerce features
 - Stripe API and secure payment flows
