@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# 🛍️ Taupe Brand
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Taupe Brand is a fully responsive e-commerce website I developed from scratch for a fashion brand looking to scale internationally. It features a clean UI, product filtering, a shopping cart, and Stripe-powered checkout.
 
-## Available Scripts
+> 💻 [Live Site](https://taupebrand.com) | 🧑‍💻 [GitHub Repo](https://github.com/Agneswei/taupe-brand)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 🧭 Responsive navigation with categories
+- 🛍️ Product listing and detail pages
+- 🛒 Add to cart, remove, and checkout flow
+- 💳 Stripe integration for secure payments
+- 🌐 Built with a global user base in mind
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧰 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Payments:** Stripe API
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🎯 Purpose
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project was part of a freelance engagement to help a fashion brand expand its digital presence. I focused on delivering a sleek, fast, and mobile-first experience aligned with industry leaders like Aritzia and Lululemon.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 📸 Preview
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Taupe Brand Screenshot](public/preview.png) 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🧠 What I Learned
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Integrating real-world e-commerce features
+- Stripe API and secure payment flows
+- Improving UX for mobile shoppers
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🛠️ Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To run locally:
+
+```bash
+git clone https://github.com/Agneswei/taupe-brand.git
+cd taupe-brand
+npm install
+npm start
