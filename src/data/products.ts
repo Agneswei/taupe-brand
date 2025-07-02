@@ -16,6 +16,29 @@ export type Product = {
   
   const rawProducts = [
     {
+      name: "TEST",
+      image: "/clothing/BE/triciaBlack.png",
+      
+      price: 0,
+      category: "Tops",
+      subcategory: "Tank Tops",
+      variants: {
+        colors: [
+          { name: "Black", code: "#000000", image: "/clothing/BE/triciaBlack.png",
+            additionalImages: ["/clothing/BE/triciaB1.png", "/clothing/BE/triciaB2.png"]
+            
+           },
+          { name: "Gray", code: "#bcbcbc", image: "/clothing/BE/triciagray.png" },
+          { name: "White", code: "#ffffff", image: "/clothing/BE/triciaWhite.png",
+            additionalImages: ["/clothing/BE/triciaW1.png", "/clothing/BE/triciaW2.png"]
+           },
+        ],
+        sizes: ["XS", "S", "M", "L"] 
+      },
+      collection: "Bare Essentials",
+ 
+    },
+    {
       name: "Tricia Breathable Knit Tank",
       image: "/clothing/BE/triciaBlack.png",
       
