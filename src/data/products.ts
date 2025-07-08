@@ -492,8 +492,8 @@ export type Product = {
     },
     {
       name: "Ms. Gigi Cardigan",
-      image: "/clothing/gigi/maisei1.jpg",
-      additionalImages: ["/clothing/gigi/maisei2.jpg", "/clothing/gigi/maisei3.jpg"],
+      image: "/clothing/gigi/cafe2.jpg",
+      additionalImages: ["/clothing/gigi/charcoal.jpg"],
       price: 1490,
       category: "Tops",
       subcategory: "Cardigans | Sweaters",
@@ -508,13 +508,19 @@ export type Product = {
           { name: "Bubble Tea", code: "#cab7a4", image: "clothing/gigi/boba.jpg",
             additionalImages: ["/clothing/gigi/boba1.jpg", "/clothing/gigi/boba2.jpg", "/clothing/gigi/boba3.jpg"]
            },        
-          { name: "cafe latte", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },        
+          { name: "Cafe Latte", code: "#7a6956", image: "clothing/gigi/cafe.jpg",
+            additionalImages: ["/clothing/gigi/cafe1.jpg", "/clothing/gigi/cafe2.jpg"]
+           },        
           { name: "cinnamon", code: "#855858", image: "clothing/gigi/cinnamon.jpg", 
             additionalImages: ["/clothing/gigi/cinnamon1.jpg", "/clothing/gigi/cinnamon2.jpg", "/clothing/gigi/cinnamon3.jpg"]
           },        
           /*{ name: "cherry tomato", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },*/        
-          { name: "oat cream", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },        
-          { name: "rosy berry", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },        
+          { name: "Oat Cream", code: "#e5c8aa", image: "clothing/gigi/oat.jpg",
+            additionalImages: ["/clothing/gigi/oat1.jpg", "/clothing/gigi/oat2.jpg"]
+           },        
+          { name: "Rosy Berry", code: "#edaacb", image: "clothing/gigi/rosy.jpg",
+            additionalImages: ["/clothing/gigi/rosy1.jpg", "/clothing/gigi/rosy2.jpg"]
+           },        
 
         ],
         sizes: ["Free Size"] 
