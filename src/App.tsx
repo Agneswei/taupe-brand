@@ -4,6 +4,7 @@ import { CartProvider } from './context/CartContext';
 import { CurrencyProvider } from './context/CurrencyContext';
 import { PasswordProvider, usePassword } from './context/PasswordContext';
 import PasswordGate from './components/PasswordGate';
+import NewsletterPopup from './components/NewsletterPopup';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Clothing from './pages/Clothing';
@@ -15,28 +16,47 @@ import OrderConfirmation from './pages/OrderConfirmation';
 import TaupeOnYou from './pages/TaupeOnYou';
 
 const AppContent: React.FC = () => {
-  const { isAuthenticated, setAuthenticated } = usePassword();
+  const { 
+    isAuthenticated, 
+    setAuthenticated, 
+    showNewsletterPopup, 
+    setShowNewsletterPopup,
+    setHasSeenNewsletter 
+  } = usePassword();
+
+  const handleNewsletterClose = () => {
+    setShowNewsletterPopup(false);
+    setHasSeenNewsletter(true);
+  };
 
   if (!isAuthenticated) {
     return <PasswordGate onPasswordCorrect={() => setAuthenticated(true)} />;
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="clothing" element={<Clothing />} />
-          <Route path="accessories" element={<Accessories />} />
-          <Route path="taupe-on-you" element={<TaupeOnYou />} />
-          <Route path="product/:id" element={<ProductDetail />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="checkout" element={<Checkout />} />
-          <Route path="order-confirmation" element={<OrderConfirmation />} />
-          <Route path="*" element={<div className="p-10 text-center">Page not found</div>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="clothing" element={<Clothing />} />
+            <Route path="accessories" element={<Accessories />} />
+            <Route path="taupe-on-you" element={<TaupeOnYou />} />
+            <Route path="product/:id" element={<ProductDetail />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="order-confirmation" element={<OrderConfirmation />} />
+            <Route path="*" element={<div className="p-10 text-center">Page not found</div>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+
+      {/* Newsletter Popup */}
+      <NewsletterPopup 
+        isOpen={showNewsletterPopup} 
+        onClose={handleNewsletterClose}
+      />
+    </>
   );
 };
 

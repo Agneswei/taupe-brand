@@ -15,9 +15,9 @@ const collectionSet1 = [
     query: "Bare+Essentials"
   },
   {
-    name: "Ticket To Soho FW23",
-    image: "/collections/TTS.png",
-    query: "Ticket+To+Soho"
+    name: "Desk To Dinner",
+    image: "/collections/dinner.png",
+    query: "Desk+To+Dinner"
   },
   
 ];
@@ -64,13 +64,13 @@ const bestsellers = products.filter(p =>
         {/* Text */}
         <div className="relative z-10 h-full flex items-center justify-start pl-16">
           <div className="text-white">
-            <h1 className="text-5xl font-light">Gigi's Favorite Collection</h1>
-            <h2 className="text-3xl font-light">Mid Year Drop</h2>
+            <h1 className="text-5xl font-bold mb-4">Gigi's Favorite Collection - Effortless Elegance for Every Day</h1>
+            <h2 className="text-3xl font-light mb-6">Mid Year Drop</h2>
             <Link
               to="/clothing?collection=Bare%20Essentials"
               className="mt-2 inline-block border border-white px-6 py-2 text-white hover:bg-white hover:text-black transition"
             >
-              Shop Now
+              Shop The Collection
             </Link>
           </div>
         </div>
