@@ -22,9 +22,15 @@ const Accessories: React.FC = () => {
   // Update filters when URL params change
   useEffect(() => {
     setSearchQuery(searchParam || "");
-    if (categoryParam) setCategory(categoryParam);
+    if (categoryParam) {
+      setCategory(categoryParam);
+    } else {
+      setCategory("All");
+    }
     if (subcategoryParam) {
       setSubcat(subcategoryParam.replace(/\+/g, " ").replace(/%26/g, "&"));
+    } else {
+      setSubcat("All");
     }
   }, [searchParam, categoryParam, subcategoryParam]);
 
@@ -35,7 +41,7 @@ const Accessories: React.FC = () => {
   const subcategories = Array.from(
     new Set(
       accessories
-        .filter((a) => a.category === category && a.subcategory)
+        .filter((a) => (category === "All" || a.category === category) && a.subcategory)
         .map((a) => a.subcategory!)
     )
   );
@@ -73,6 +79,12 @@ const Accessories: React.FC = () => {
     }
   };
 
+  // Reset subcategory when category changes
+  const handleCategoryChange = (newCategory: string) => {
+    setCategory(newCategory);
+    setSubcat("All"); // Reset subcategory when category changes
+  };
+
   return (
     <div className="px-10 py-10">
       <h1 className="text-3xl font-light mb-6">{getPageTitle()}</h1>
@@ -93,18 +105,34 @@ const Accessories: React.FC = () => {
 
       <FilterBar
         selectedCategory={category}
-        onSelectCategory={setCategory}
+        onSelectCategory={handleCategoryChange}
         selectedSub={subcat}
         onSelectSub={setSubcat}
         subcategories={subcategories}
         categories={categories}
       />
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-        {filteredAccessories.map((accessory) => (
-          <ProductCard key={accessory.id} product={accessory} />
-        ))}
-      </div>
+      {filteredAccessories.length === 0 ? (
+        <div className="text-center py-12">
+          <p className="text-gray-500">No accessories found for the selected filters.</p>
+          <button 
+            onClick={() => {
+              setCategory("All");
+              setSubcat("All");
+              setSearchQuery("");
+            }}
+            className="mt-4 text-sm underline hover:no-underline"
+          >
+            Clear all filters
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {filteredAccessories.map((accessory) => (
+            <ProductCard key={accessory.id} product={accessory} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

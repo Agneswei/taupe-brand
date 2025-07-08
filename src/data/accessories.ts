@@ -3,6 +3,7 @@ export type Accessory = {
   name: string;
   image: string;
   price: number;
+  soldOut?: boolean;
   category: string;
   subcategory?: string;
   variants?: {
@@ -17,8 +18,7 @@ const rawAccessories = [
     name: "Velvet Box Bag",
     image: "/clothing/bags/velvetGold.png",
     price: 1790,
-    category: "Accessories",
-    subcategory: "Bags",      
+    category: "Bags", 
     variants: {
         colors: [
         { name: "Golden Brown", code: "#958258", image: "/clothing/bags/velvetGold.png" },
@@ -32,8 +32,7 @@ const rawAccessories = [
     image: "/clothing/bags/nomadBeige.jpg",
     additionalImages: ["/clothing/bags/nomadBeige1.jpg"],
     price: 1790,
-    category: "Accessories",
-    subCategory: "Bags",
+    category: "Bags", 
     variants: {
       colors: [
         { name: "Beige", code: "#e0d7bf", image: "/clothing/bags/nomadBeige.png", 

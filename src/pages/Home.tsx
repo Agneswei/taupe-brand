@@ -4,6 +4,7 @@ import homeImg from '../assets/home.jpg';
 import CollectionGrid from "../components/CollectionGrid";
 import ProductScroller from "../components/ProductScroller";
 import TaupeOnYouPreview from "../components/TaupeOnYouPreview";
+import FeaturedCategories from "../components/FeaturedCategories";
 import { products } from "../data/products";
 
 const Home: React.FC = () => {
@@ -49,14 +50,10 @@ const collectionSet3 = [
     query: "To+Night"
   },
 ];
-const latestDrop = products.filter(p =>
-  ["Lena Button Back Top", "Mira Cardigan", "Greta Wide Leg Pants", "Tricia Breathable Knit Tank"].includes(p.name)
-);
 
 const bestsellers = products.filter(p =>
   ["Chloe Top", "Jenny Top", "Luna Top", "Selina SKirt"].includes(p.name)
 );
-
 
   return (
     <div>
@@ -84,25 +81,24 @@ const bestsellers = products.filter(p =>
 
       {/* Rest of content - Now outside the hero section */}
       <div>
-      <CollectionGrid collections={collectionSet1} />
-      <ProductScroller title="Latest Drop" products={latestDrop} />
+        <CollectionGrid collections={collectionSet1} />
+        <FeaturedCategories />
+      </div>
+
+      {/* Full-width second collection grid OUTSIDE the default container */}
+      <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
+        <CollectionGrid collections={collectionSet2} />
+      </div>
+      <ProductScroller title="" products={bestsellers} />
+
+      <CollectionGrid collections={collectionSet3} />
+
+      <div>
+        <TaupeOnYouPreview />
+      </div>
+
     </div>
-
-    {/* Full-width second collection grid OUTSIDE the default container */}
-    <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
-      <CollectionGrid collections={collectionSet2} />
-    </div>
-    <ProductScroller title="" products={bestsellers} />
-
-    <CollectionGrid collections={collectionSet3} />
-
-    <div>
-      <TaupeOnYouPreview />
-    </div>
-
-        </div>
-    );
-  };
+  );
+};
 
 export default Home;
-
