@@ -372,7 +372,7 @@ const Navbar: React.FC = () => {
                       <div>
                         <h4 className="font-medium mb-2 text-gray-500 text-sm uppercase">Collections</h4>
                         <ul className="space-y-3">
-                        <li><Link to="/clothing?search=Gigi+Favorite" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Gigi's Favorite Collection</Link></li>
+                        <li><Link to="/clothing?search=Gigi's+Favorite" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Gigi's Favorite Collection</Link></li>
                         <li><Link to="/clothing?search=Be+That+Light" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Be That Light</Link></li>
                         <li><Link to="/clothing?search=Bare+Essentials" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Bare Essentials SS25</Link></li>
                         <li><Link to="/clothing?search=Romance+Mansion" onClick={handleDropdownLinkClick} className="block py-1 hover:text-gray-500">Romance Mansion</Link></li>

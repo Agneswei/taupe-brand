@@ -454,7 +454,42 @@ export type Product = {
       },
       collection: "Romance Mansion",
     },
-  
+    {
+      name: "Celine Short",
+      image: "/clothing/gigi/celine1.jpg",
+      additionalImages: ["/clothing/gigi/celine2.jpg", "/clothing/gigi/celine3.jpg"],
+      price: 890,
+      category: "Bottoms",
+      subcategory: "Shorts",
+      variants: {
+        sizes: ["S", "M", "L", "XL"] 
+      },
+      collection: "Gigi's Favorite Collection",
+    },
+    {
+      name: "Jolin Pant",
+      image: "/clothing/gigi/jolin1.jpg",
+      additionalImages: ["/clothing/gigi/jolin2.jpg", "/clothing/gigi/jolin3.jpg"],
+      price: 690,
+      category: "Bottoms",
+      subcategory: "Shorts",
+      variants: {
+        sizes: ["S", "M", "L"] 
+      },
+      collection: "Gigi's Favorite Collection",
+    },
+   {
+      name: "Maisei Top",
+      image: "/clothing/gigi/maisei1.jpg",
+      additionalImages: ["/clothing/gigi/maisei2.jpg", "/clothing/gigi/maisei3.jpg"],
+      price: 790,
+      category: "Tops",
+      subcategory: "Tank Tops",
+      variants: {
+        sizes: ["Freesize"] 
+      },
+      collection: "Gigi's Favorite Collection",
+    },
   ];
   
 

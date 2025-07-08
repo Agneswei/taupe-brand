@@ -27,6 +27,24 @@ const rawAccessories = [
         ],
     },
  },
+  {
+    name: "Gigi's Nomad Bag",
+    image: "/clothing/bags/nomadBeige.jpg",
+    additionalImages: ["/clothing/bags/nomadBeige1.jpg"],
+    price: 1390,
+    category: "Accessories",
+    subCategory: "Bags",
+    variants: {
+      colors: [
+        { name: "Beige", code: "#e0d7bf", image: "/clothing/bags/nomadBeige.png", 
+          additionalImages: ["/clothing/Gigi/nomadBeige1.png", "/clothing/bags/nomadBeige2.png"], 
+          },
+        { name: "Brown", code: "#6d4e1d", image: "/clothing/BE/selinaBrown.png" },
+        { name: "White", code: "#ffffff", image: "/clothing/BE/selinaWhite.png" },        
+      ],
+    },
+    collection: "Gigi's Favorite Collection",
+  },
 ];
 
 export const accessories: Accessory[] = rawAccessories.map((accessory, index) => ({
