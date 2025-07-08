@@ -19,6 +19,12 @@ const collectionSet1 = [
     image: "/collections/dinner.png",
     query: "Desk+To+Dinner"
   },
+  {
+    name: "The Tailored",
+    image: "/collections/tailored.jpg",  
+    query: "The+Tailored",
+    description: "Sophisticated tailoring for the modern professional"
+  }
   
 ];
 
