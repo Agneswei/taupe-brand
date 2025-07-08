@@ -138,4 +138,3 @@ const Accessories: React.FC = () => {
 };
 
 export default Accessories;
-// This file is for the Accessories page, which displays a grid of accessories
