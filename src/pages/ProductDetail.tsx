@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
-import { useCurrency } from "../context/CurrencyContext"; // Import useCurrency
+import { useCurrency } from "../context/CurrencyContext";
 
 type ProductColor = {
   name: string;
   code: string;
   image: string;
-  additionalImages?: string[]; // New field for additional images
+  additionalImages?: string[];
+  soldOut?: boolean;
 }
 
 type ProductVariant = {
@@ -24,7 +25,7 @@ type ExtendedProduct = {
   category: string;
   subcategory?: string;
   variants?: ProductVariant;
-  additionalImages?: string[]; // Product-level additional images
+  additionalImages?: string[];
 };
 
 const getProductWithVariants = (product: any): ExtendedProduct => {
@@ -32,7 +33,6 @@ const getProductWithVariants = (product: any): ExtendedProduct => {
     return product as ExtendedProduct;
   }
 
-  // Default variants based on product category
   let defaultVariant: ProductVariant = {
     colors: [
       { name: "Default", code: "#888888", image: product.image }
@@ -40,7 +40,6 @@ const getProductWithVariants = (product: any): ExtendedProduct => {
     sizes: ["S", "M", "L"]
   };
 
-  // Customize defaults based on product category
   if (product.category === "Tops") {
     defaultVariant.sizes = ["XS", "S", "M", "L", "XL"];
     
@@ -55,7 +54,6 @@ const getProductWithVariants = (product: any): ExtendedProduct => {
     defaultVariant.sizes = ["0", "2", "4", "6", "8", "10", "12", "14"];
   }
 
-  // Return a new object with the default variants added
   return {
     ...product,
     variants: defaultVariant
@@ -66,7 +64,7 @@ const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { addToCart } = useCart();
-  const { formatPrice } = useCurrency(); // Use the formatPrice function from context
+  const { formatPrice } = useCurrency();
   
   const [product, setProduct] = useState<ExtendedProduct | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -77,6 +75,15 @@ const ProductDetail: React.FC = () => {
   const [hasTrendingColors, setHasTrendingColors] = useState(false);
   const [quantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [showEmailInput, setShowEmailInput] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+
+  // Helper function to ensure proper image paths
+  const formatImagePath = (imagePath: string): string => {
+    if (!imagePath) return '';
+    return imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  };
 
   useEffect(() => {
     const productId = Number(id);
@@ -87,28 +94,28 @@ const ProductDetail: React.FC = () => {
       setProduct(productWithVariants);
       
       if (productWithVariants.variants) {
-        // Initialize with the first color's images
         if (productWithVariants.variants.colors && productWithVariants.variants.colors.length > 0) {
-          const firstColor = productWithVariants.variants.colors[0];
-          setSelectedColor(firstColor);
+          // Find the first available (not sold out) color
+          const firstAvailableColor = productWithVariants.variants.colors.find(color => !color.soldOut) 
+            || productWithVariants.variants.colors[0]; // Fallback to first color if all are sold out
           
-          // Combine main image with additional images for this color
-          const colorImages = [firstColor.image];
-          if (firstColor.additionalImages) {
-            colorImages.push(...firstColor.additionalImages);
+          setSelectedColor(firstAvailableColor);
+          
+          const colorImages = [formatImagePath(firstAvailableColor.image)];
+          
+          if (firstAvailableColor.additionalImages) {
+            colorImages.push(...firstAvailableColor.additionalImages.map(formatImagePath));
           }
           
-          // Add product-level additional images if present
           if (productWithVariants.additionalImages) {
-            colorImages.push(...productWithVariants.additionalImages);
+            colorImages.push(...productWithVariants.additionalImages.map(formatImagePath));
           }
           
           setAllImages(colorImages);
         } else {
-          // Fallback to product image if no colors
-          const productImages = [productWithVariants.image];
+          const productImages = [formatImagePath(productWithVariants.image)];
           if (productWithVariants.additionalImages) {
-            productImages.push(...productWithVariants.additionalImages);
+            productImages.push(...productWithVariants.additionalImages.map(formatImagePath));
           }
           setAllImages(productImages);
         }
@@ -125,25 +132,21 @@ const ProductDetail: React.FC = () => {
   // Update the image array when a color is selected
   useEffect(() => {
     if (selectedColor && product) {
-      // Create a new array of images starting with the main image for this color
-      const colorImages = [selectedColor.image];
+      const colorImages = [formatImagePath(selectedColor.image)];
       
-      // Add any additional images specific to this color
       if (selectedColor.additionalImages) {
-        colorImages.push(...selectedColor.additionalImages);
+        colorImages.push(...selectedColor.additionalImages.map(formatImagePath));
       }
       
-      // Add product-level additional images if present
       if (product.additionalImages) {
-        colorImages.push(...product.additionalImages);
+        colorImages.push(...product.additionalImages.map(formatImagePath));
       }
       
       setAllImages(colorImages);
-      setCurrentImageIndex(0); // Reset to first image when color changes
+      setCurrentImageIndex(0);
     }
   }, [selectedColor, product]);
 
-  // If product is not found or still loading
   if (!product) {
     return <div className="p-10 text-center">Product not found</div>;
   }
@@ -166,7 +169,6 @@ const ProductDetail: React.FC = () => {
       return;
     }
     
-    // Add the product to the cart
     addToCart(
       product, 
       selectedSize, 
@@ -174,15 +176,40 @@ const ProductDetail: React.FC = () => {
       selectedColor ? selectedColor.name : undefined
     );
     
-    // Show success message 
     setAddedToCart(true);
     setTimeout(() => {
       setAddedToCart(false);
     }, 3000);
   };
 
+  const handleNotifyWhenAvailable = () => {
+    setShowEmailInput(true);
+  };
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      // Here you would typically send the email to your backend
+      console.log(`Notify ${email} when ${selectedColor?.name} ${product.name} is available`);
+      setEmailSubmitted(true);
+      setTimeout(() => {
+        setEmailSubmitted(false);
+        setShowEmailInput(false);
+        setEmail("");
+      }, 3000);
+    }
+  };
+
   const handleGoToCart = () => {
     navigate("/cart");
+  };
+
+  const handleColorSelect = (color: ProductColor) => {
+    setSelectedColor(color);
+    // Reset email notification state when changing colors
+    setShowEmailInput(false);
+    setEmailSubmitted(false);
+    setEmail("");
   };
 
   if (!product.variants) {
@@ -190,6 +217,9 @@ const ProductDetail: React.FC = () => {
   }
 
   const { colors, sizes } = product.variants;
+
+  // Check if selected color is sold out
+  const isSelectedColorSoldOut = selectedColor?.soldOut || false;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -202,13 +232,23 @@ const ProductDetail: React.FC = () => {
         {/* Left - Image Slideshow */}
         <div className="w-full lg:w-3/5 relative">
           <div className="relative aspect-[3/4] bg-gray-100">
-            <img 
-              src={allImages[currentImageIndex]} 
-              alt={product.name} 
-              className="w-full h-full object-cover"
-            />
+            {allImages[currentImageIndex] ? (
+              <img 
+                src={allImages[currentImageIndex]} 
+                alt={product.name} 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  console.error('Image failed to load:', allImages[currentImageIndex]);
+                  e.currentTarget.src = '/placeholder-image.jpg';
+                }}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-gray-500">
+                No image available
+              </div>
+            )}
             
-            {/* Only show navigation arrows if there are multiple images */}
+            {/* Navigation arrows */}
             {allImages.length > 1 && (
               <>
                 <button 
@@ -254,7 +294,7 @@ const ProductDetail: React.FC = () => {
             </button>
           </div>
           
-          {/* Thumbnail row for additional images */}
+          {/* Thumbnail row */}
           {allImages.length > 1 && (
             <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
               {allImages.map((img, index) => (
@@ -269,14 +309,17 @@ const ProductDetail: React.FC = () => {
                   <img 
                     src={img} 
                     alt={`${product.name} view ${index + 1}`} 
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      console.error('Thumbnail failed to load:', img);
+                    }}
                   />
                 </button>
               ))}
             </div>
           )}
           
-          {/* Image Pagination Dots - only show if multiple images */}
+          {/* Pagination dots */}
           {allImages.length > 1 && (
             <div className="flex justify-center mt-4 gap-2">
               {allImages.map((_, index) => (
@@ -302,12 +345,12 @@ const ProductDetail: React.FC = () => {
             {formatPrice(product.price)}
           </div>
 
-          {/* Trending Colors - only show if there are at least 2 colors */}
+          {/* Trending Colors */}
           {hasTrendingColors && (
             <div className="mb-8">
               <h2 className="font-medium mb-3">Trending Colours</h2>
               <div className="flex flex-wrap gap-2">
-                {colors && colors.slice(0, 2).map((color) => (
+                {colors && colors.slice(0, 2).filter(color => !color.soldOut).map((color) => (
                   <div 
                     key={color.name}
                     className="w-12 h-12 rounded-full border overflow-hidden"
@@ -318,7 +361,7 @@ const ProductDetail: React.FC = () => {
             </div>
           )}
 
-          {/* Color Options - only show if there are multiple colors */}
+          {/* Color Options */}
           {colors && colors.length > 1 && (
             <div className="mb-8">
               <div className="flex justify-between items-center mb-3">
@@ -329,13 +372,20 @@ const ProductDetail: React.FC = () => {
                 {colors.map((color) => (
                   <button
                     key={color.name}
-                    className={`w-12 h-12 rounded-full border-2 overflow-hidden hover:opacity-80 transition ${
+                    className={`w-12 h-12 rounded-full border-2 overflow-hidden hover:opacity-80 transition relative ${
                       selectedColor?.name === color.name ? "border-black" : "border-gray-200"
                     }`}
                     style={{ backgroundColor: color.code }}
-                    onClick={() => setSelectedColor(color)}
-                    aria-label={`Select color ${color.name}`}
-                  ></button>
+                    onClick={() => handleColorSelect(color)}
+                    aria-label={`Select color ${color.name}${color.soldOut ? ' (Sold Out)' : ''}`}
+                  >
+                    {/* Simple diagonal slash for sold out */}
+                    {color.soldOut && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-8 h-0.5 bg-black rotate-45"></div>
+                      </div>
+                    )}
+                  </button>
                 ))}
               </div>
             </div>
@@ -370,7 +420,6 @@ const ProductDetail: React.FC = () => {
             )}
           </div>
 
-          {/* "Size sold out" functionality */}
           <div className="mb-8">
             <button className="text-sm underline">
               Size sold out? Select size to get notified
@@ -390,15 +439,62 @@ const ProductDetail: React.FC = () => {
             </div>
           )}
 
-          {/* Add to Bag Button */}
-          <button
-            onClick={handleAddToBag}
-            className="w-full bg-black text-white py-3 mb-4 uppercase tracking-wider text-sm font-medium hover:bg-gray-800 transition"
-          >
-            Add to Bag — {formatPrice(product.price)}
-          </button>
+          {/* Email Submitted Message */}
+          {emailSubmitted && (
+            <div className="bg-green-50 text-green-800 p-3 mb-4">
+              <span>We'll notify you when this item is back in stock!</span>
+            </div>
+          )}
 
-          {/* Product Details (Accordion) */}
+          {/* Add to Bag or Notify Button */}
+          {isSelectedColorSoldOut ? (
+            <div>
+              {!showEmailInput ? (
+                <button
+                  onClick={handleNotifyWhenAvailable}
+                  className="w-full bg-black text-white py-3 mb-4 uppercase tracking-wider text-sm font-medium hover:bg-gray-800 transition"
+                >
+                  Notify When Available
+                </button>
+              ) : (
+                <form onSubmit={handleEmailSubmit} className="mb-4">
+                  <div className="flex gap-2">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email"
+                      className="flex-1 px-3 py-3 border border-gray-300 text-sm focus:outline-none focus:border-black"
+                      required
+                      autoFocus
+                    />
+                    <button
+                      type="submit"
+                      className="bg-black text-white px-6 py-3 text-sm hover:bg-gray-800 transition"
+                    >
+                      Notify Me
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowEmailInput(false)}
+                    className="text-sm text-gray-500 mt-2 hover:underline"
+                  >
+                    Cancel
+                  </button>
+                </form>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={handleAddToBag}
+              className="w-full bg-black text-white py-3 mb-4 uppercase tracking-wider text-sm font-medium hover:bg-gray-800 transition"
+            >
+              Add to Bag — {formatPrice(product.price)}
+            </button>
+          )}
+
+          {/* Product Details Accordion */}
           <div className="border-t border-gray-200 pt-4">
             <details className="group">
               <summary className="flex justify-between items-center cursor-pointer py-2">

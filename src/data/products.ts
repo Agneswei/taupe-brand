@@ -4,6 +4,7 @@ export type Product = {
     name: string;
     image: string;
     additionalImages?: string[];
+    soldOut?: boolean;
     price: number;
     category: string;
     subcategory?: string;
@@ -18,7 +19,6 @@ export type Product = {
     {
       name: "TEST",
       image: "/clothing/BE/triciaBlack.png",
-      
       price: 0,
       category: "Tops",
       subcategory: "Tank Tops",
@@ -499,26 +499,28 @@ export type Product = {
       subcategory: "Cardigans | Sweaters",
       variants: {
         colors: [
-          { name: "Almond Milk", code: "#f8f2ec", image: "clothing/gigi/almond.jpg",
+          { name: "Almond Milk", code: "#f8f2ec", image: "/clothing/gigi/almond.jpg",
             additionalImages: ["/clothing/gigi/almond1.jpg", "/clothing/gigi/almond2.jpg", "/clothing/gigi/almond3.jpg"]
            },        
-          { name: "Black Charcoal", code: "#000000", image: "clothing/gigi/charcoal.jpg",
+          { name: "Black Charcoal", code: "#000000", image: "/clothing/gigi/charcoal.jpg",
             additionalImages: ["/clothing/gigi/charcoal1.jpg", "/clothing/gigi/charcoal2.jpg", "/clothing/gigi/charcoal3.jpg", "/clothing/gigi/charcoal4.jpg"]
            },  
-          { name: "Bubble Tea", code: "#cab7a4", image: "clothing/gigi/boba.jpg",
+          { name: "Bubble Tea", code: "#cab7a4", image: "/clothing/gigi/boba.jpg",
             additionalImages: ["/clothing/gigi/boba1.jpg", "/clothing/gigi/boba2.jpg", "/clothing/gigi/boba3.jpg"]
            },        
-          { name: "Cafe Latte", code: "#7a6956", image: "clothing/gigi/cafe.jpg",
+          { name: "Cafe Latte", code: "#7a6956", image: "/clothing/gigi/cafe.jpg",
             additionalImages: ["/clothing/gigi/cafe1.jpg", "/clothing/gigi/cafe2.jpg"]
            },        
-          { name: "cinnamon", code: "#855858", image: "clothing/gigi/cinnamon.jpg", 
+          { name: "cinnamon", code: "#855858", image: "/clothing/gigi/cinnamon.jpg", 
             additionalImages: ["/clothing/gigi/cinnamon1.jpg", "/clothing/gigi/cinnamon2.jpg", "/clothing/gigi/cinnamon3.jpg"]
           },        
-          /*{ name: "cherry tomato", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },*/        
-          { name: "Oat Cream", code: "#e5c8aa", image: "clothing/gigi/oat.jpg",
+          { name: "Cherry Tomato", code: "#aa1a0b", image: "/clothing/gigi/cherry.jpg",
+            soldOut: true
+           },        
+          { name: "Oat Cream", code: "#e5c8aa", image: "/clothing/gigi/oat.jpg",
             additionalImages: ["/clothing/gigi/oat1.jpg", "/clothing/gigi/oat2.jpg"]
            },        
-          { name: "Rosy Berry", code: "#edaacb", image: "clothing/gigi/rosy.jpg",
+          { name: "Rosy Berry", code: "#edaacb", image: "/clothing/gigi/rosy.jpg",
             additionalImages: ["/clothing/gigi/rosy1.jpg", "/clothing/gigi/rosy2.jpg"]
            },        
 
