@@ -492,8 +492,8 @@ export type Product = {
     },
     {
       name: "Ms. Gigi Cardigan",
-      image: "/clothing/gigi/cafe2.jpg",
-      additionalImages: ["/clothing/gigi/charcoal.jpg"],
+      image: "/clothing/gigi/cherry.jpg",
+        additionalImages: ["/clothing/gigi/charcoal.jpg", "/clothing/gigi/cafe2.jpg"],
       price: 1490,
       category: "Tops",
       subcategory: "Cardigans | Sweaters",
