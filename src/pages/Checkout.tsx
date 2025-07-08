@@ -14,6 +14,7 @@ const stripePromise = loadStripe('pk_test_51RB5rjPiC94MDr5SnhKfIZ2W9pjmV2L8m96Bm
 // Type for the PaymentForm props
 interface PaymentFormProps {
   onPaymentComplete: () => void;
+  totalAmount: number;
 }
 
 const PaymentForm: React.FC<PaymentFormProps> = ({ onPaymentComplete }) => {
@@ -76,6 +77,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onPaymentComplete }) => {
         <label className="block text-sm mb-1">Card Details</label>
         <div className="border border-gray-300 p-3 rounded">
           <CardElement options={{
+            hidePostalCode: true,
             style: {
               base: {
                 fontSize: '16px',
@@ -128,6 +130,13 @@ const Checkout: React.FC = () => {
 
   // Shipping methods data
   const shippingMethods = [
+    {
+      id: 'free',
+      name: 'Free Testing Shipping',
+      price: 0,
+      description: 'Free shipping for testing',
+      estimatedDelivery: 'Test delivery'
+    },
     {
       id: 'standard',
       name: 'Standard Shipping',
@@ -515,8 +524,7 @@ const Checkout: React.FC = () => {
                 {/* Payment Methods */}
                 <div className="mb-6">
                   <h2 className="font-medium mb-4">Payment</h2>
-                  <PaymentForm onPaymentComplete={handlePaymentComplete} />
-                </div>
+                  <PaymentForm onPaymentComplete={handlePaymentComplete} totalAmount={total} />                </div>
               </div>
             )}
           </div>
