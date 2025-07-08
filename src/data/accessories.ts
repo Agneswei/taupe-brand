@@ -31,7 +31,7 @@ const rawAccessories = [
     name: "Gigi's Nomad Bag",
     image: "/clothing/bags/nomadBeige.jpg",
     additionalImages: ["/clothing/bags/nomadBeige1.jpg"],
-    price: 1390,
+    price: 1790,
     category: "Accessories",
     subCategory: "Bags",
     variants: {

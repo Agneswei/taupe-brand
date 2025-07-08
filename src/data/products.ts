@@ -467,7 +467,7 @@ export type Product = {
       collection: "Gigi's Favorite Collection",
     },
     {
-      name: "Jolin Pant",
+      name: "Jolin Short",
       image: "/clothing/gigi/jolin1.jpg",
       additionalImages: ["/clothing/gigi/jolin2.jpg", "/clothing/gigi/jolin3.jpg"],
       price: 690,
@@ -487,6 +487,37 @@ export type Product = {
       subcategory: "Tank Tops",
       variants: {
         sizes: ["Freesize"] 
+      },
+      collection: "Gigi's Favorite Collection",
+    },
+    {
+      name: "Ms. Gigi Cardigan",
+      image: "/clothing/gigi/maisei1.jpg",
+      additionalImages: ["/clothing/gigi/maisei2.jpg", "/clothing/gigi/maisei3.jpg"],
+      price: 1490,
+      category: "Tops",
+      subcategory: "Cardigans | Sweaters",
+      variants: {
+        colors: [
+          { name: "Almond Milk", code: "#f8f2ec", image: "clothing/gigi/almond.jpg",
+            additionalImages: ["/clothing/gigi/almond1.jpg", "/clothing/gigi/almond2.jpg", "/clothing/gigi/almond3.jpg"]
+           },        
+          { name: "Black Charcoal", code: "#000000", image: "clothing/gigi/charcoal.jpg",
+            additionalImages: ["/clothing/gigi/charcoal1.jpg", "/clothing/gigi/charcoal2.jpg", "/clothing/gigi/charcoal3.jpg", "/clothing/gigi/charcoal4.jpg"]
+           },  
+          { name: "Bubble Tea", code: "#cab7a4", image: "clothing/gigi/boba.jpg",
+            additionalImages: ["/clothing/gigi/boba1.jpg", "/clothing/gigi/boba2.jpg", "/clothing/gigi/boba3.jpg"]
+           },        
+          { name: "cafe latte", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },        
+          { name: "cinnamon", code: "#855858", image: "clothing/gigi/cinnamon.jpg", 
+            additionalImages: ["/clothing/gigi/cinnamon1.jpg", "/clothing/gigi/cinnamon2.jpg", "/clothing/gigi/cinnamon3.jpg"]
+          },        
+          /*{ name: "cherry tomato", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },*/        
+          { name: "oat cream", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },        
+          { name: "rosy berry", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },        
+
+        ],
+        sizes: ["Free Size"] 
       },
       collection: "Gigi's Favorite Collection",
     },
