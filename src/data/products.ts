@@ -254,7 +254,9 @@ export type Product = {
           { name: "Gray", code: "#bcbcbc", image: "/clothing/RM/zoeGray.jpg",
             additionalImages: ["/clothing/RM/zoeG1.jpg", "/clothing/RM/zoeG2.jpg"]
           },
-          { name: "Black", code: "#000000", image: "/clothing/RM/zoeBlack.png"}
+          { name: "Black", code: "#000000", image: "/clothing/gigi/zoeBlack.jpg",
+            additionalImages: ["/clothing/gigi/zoeB1.jpg", "/clothing/gigi/zoeB2.jpg"]
+          }
           
         ],
         sizes: ["S", "M"] 
@@ -370,9 +372,9 @@ export type Product = {
       collection: "Summer Mood",
     },
     {
-      name: "Selina Skort",
+      name: "Selina Skort with Belt",
       image: "/clothing/BE/selinaKhaki.png",
-      price: 890,
+      price: 1290,
       category: "Bottoms",
       subcategory: "Skirts",      
       variants: {
@@ -393,7 +395,7 @@ export type Product = {
       subcategory: "Shirts & Blouses",      
       variants: {
         colors: [
-          { name: "Kahki", code: "#958258", image: "clothing/VE/jenny.png" },        
+          { name: "Kahki", code: "#958258", image: "/clothing/VE/jenny.png" },        
         ],
         sizes: ["Free Size"] 
       },
@@ -407,8 +409,8 @@ export type Product = {
       subcategory: "Shirts & Blouses",      
       variants: {
         colors: [
-          { name: "black", code: "#000000", image: "clothing/VE/chloeBlack.png" },        
-          { name: "white", code: "#ffffff", image: "clothing/VE/chloeWhite.png" },        
+          { name: "black", code: "#000000", image: "/clothing/VE/chloeBlack.png" },        
+          { name: "white", code: "#ffffff", image: "/clothing/VE/chloeWhite.png" },        
         ],
         sizes: ["Free Size"] 
       },
@@ -422,7 +424,7 @@ export type Product = {
       subcategory: "Shirts & Blouses",      
       variants: {
         colors: [
-          { name: "black", code: "#000000", image: "clothing/VE/luna1.png" },        
+          { name: "black", code: "#000000", image: "/clothing/VE/luna1.png" },        
         ],
         sizes: ["Free Size"] 
       },
@@ -430,13 +432,18 @@ export type Product = {
     },
     {
       name: "Selina Skirt",
-      image: "/clothing/VE/selina.png",
-      price: 690,
+      image: "/clothing/gigi/selinaPearl3.jpg",
+      price: 1490,
       category: "Bottoms",
       subcategory: "Skirts",
       variants: {
         colors: [
-          { name: "beige", code: "#d4bb93", image: "clothing/VE/selina.png" },        
+          { name: "Pearl", code: "#f8f2ec", image: "/clothing/gigi/selinaPearl.jpg",
+            additionalImages: ["/clothing/gigi/selinaPearl1.jpg", "/clothing/gigi/selinaPearl2.jpg"]
+          }, 
+          { name: "Misty Rose", code: "#d8a697", image: "/clothing/gigi/selinaRose.jpg",
+            additionalImages: ["/clothing/gigi/selinaRose1.jpg"]
+           },        
         ],
         sizes: ["Free Size"] 
       },
@@ -524,6 +531,75 @@ export type Product = {
             additionalImages: ["/clothing/gigi/rosy1.jpg", "/clothing/gigi/rosy2.jpg"]
            },        
 
+        ],
+        sizes: ["Free Size"] 
+      },
+      collection: "Gigi's Favorite Collection",
+    },
+    {
+      name: "Ms. Gigi Cotton Skirt",
+      image: "/clothing/gigi/cotton.jpg",
+        additionalImages: ["/clothing/gigi/cotton1.jpg", "/clothing/gigi/cotton2.jpg"],
+      price: 990,
+      category: "Bottoms",
+      subcategory: "Skirts",
+      variants: {
+        sizes: ["Free Size"] 
+      },
+      collection: "Gigi's Favorite Collection",
+    },
+    {
+      name: "Ms. Gigi Knit Vest",
+      image: "/clothing/gigi/vestBlack.jpg",
+        additionalImages: ["/clothing/gigi/vestWhite.jpg"],
+      price: 1390,
+      category: "Tops",
+      subcategory: "Shirts & Blouses",
+      variants: {
+        colors: [
+          { name: "Black", code: "#000000", image: "/clothing/gigi/vestBlack.jpg",
+            additionalImages: ["/clothing/gigi/vestB1.jpg", "/clothing/gigi/vestB2.jpg"]
+           },        
+          { name: "White", code: "#ffffff", image: "/clothing/gigi/vestWhite.jpg",
+            additionalImages: ["/clothing/gigi/vestW1.jpg", "/clothing/gigi/vestW2.jpg"]
+           },        
+          { name: "Beige", code: "#d4bb93", image: "/clothing/gigi/vestBeige.jpg",
+            additionalImages: ["/clothing/gigi/vestBe1.jpg", "/clothing/gigi/vestBe2.jpg"]
+           }
+        ],
+        sizes: ["Free Size"] 
+      },
+      collection: "Gigi's Favorite Collection",
+    },
+    {
+      name: "Ms. Gigi Tank Top",
+      image: "/clothing/gigi/tank.jpg",
+        additionalImages: ["/clothing/gigi/tank1.jpg", "/clothing/gigi/tank2.jpg"],
+      price: 790,
+      category: "Tops",
+      subcategory: "Tank Top",
+      variants: {
+        sizes: ["Free Size"] 
+      },
+      collection: "Gigi's Favorite Collection",
+    },
+    {
+      name: "Twilight Skirt",
+      image: "/clothing/gigi/silverGray.jpg",
+      price: 1590,
+      category: "Bottoms",
+      subcategory: "Skirts",
+      variants: {
+        colors: [
+           { name: "Frost White", code: "#ffffff", image: "/clothing/gigi/frostWhite.jpg",
+            additionalImages: ["/clothing/gigi/frostWhite1.jpg"]
+           },        
+          { name: "Silver Gray", code: "#7c7575", image: "/clothing/gigi/silverGray.jpg",
+            additionalImages: ["/clothing/gigi/silverGray1.jpg"]
+           },        
+          { name: "Enigma Black", code: "#000000", image: "/clothing/gigi/vestBeige.jpg",
+            additionalImages: ["/clothing/gigi/vestBe1.jpg", "/clothing/gigi/vestBe2.jpg"]
+           }
         ],
         sizes: ["Free Size"] 
       },
