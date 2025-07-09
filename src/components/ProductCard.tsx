@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
       <div className="mt-2 text-sm">
         <h3 className="font-light">{product.name}</h3>
-        <p className="text-gray-600">${formatPrice(product.price)}</p>
+        <p className="text-gray-600">{formatPrice(product.price)}</p>
       </div>
     </Link>
   );

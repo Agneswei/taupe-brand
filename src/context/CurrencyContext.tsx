@@ -36,9 +36,15 @@ export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({ children }
     const rate = CURRENCY_RATES[currency];
     const convertedPrice = priceInTHB * rate;
     
-    return `${CURRENCY_SYMBOLS[currency]}${convertedPrice.toLocaleString(
+    // Use the correct currency symbol based on selected currency
+    const symbol = CURRENCY_SYMBOLS[currency];
+    
+    return `${symbol}${convertedPrice.toLocaleString(
       currency === 'THB' ? 'th-TH' : 'en-US',
-      { minimumFractionDigits: currency === 'THB' ? 0 : 2, maximumFractionDigits: currency === 'THB' ? 0 : 2 }
+      { 
+        minimumFractionDigits: currency === 'THB' ? 0 : 2, 
+        maximumFractionDigits: currency === 'THB' ? 0 : 2 
+      }
     )}`;
   };
 
