@@ -3,6 +3,8 @@ export type Accessory = {
   name: string;
   image: string;
   price: number;
+  priceUSD?: number; 
+  priceSGD?: number; 
   soldOut?: boolean;
   category: string;
   subcategory?: string;
@@ -32,6 +34,7 @@ const rawAccessories = [
     image: "/clothing/bags/nomadBeige.jpg",
     additionalImages: ["/clothing/bags/nomadBeige1.jpg"],
     price: 1790,
+    priceUSD: 60, 
     category: "Bags", 
     variants: {
       colors: [

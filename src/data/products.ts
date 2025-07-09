@@ -6,6 +6,8 @@ export type Product = {
     additionalImages?: string[];
     soldOut?: boolean;
     price: number;
+    priceUSD?: number; 
+    priceSGD?: number; 
     category: string;
     subcategory?: string;
     variants?: {
@@ -112,6 +114,7 @@ export type Product = {
       name: "Greta Wide Leg Pant",
       image: "/clothing/gretawhite.png",
       price: 1690,
+      priceUSD: 55,
       category: "Bottoms",
       subcategory: "Pants",
       collection: "Bare Essentials",
@@ -120,6 +123,7 @@ export type Product = {
       name: "Evelyn Straight Leg Pant",
       image: "/clothing/evelyn.png",
       price: 1390,
+      priceUSD: 45,
       category: "Bottoms",
       subcategory: "Pants",
       collection: "Bare Essentials",
@@ -311,19 +315,6 @@ export type Product = {
       collection: "Summer Mood",
     },
     {
-      name: "Kelly Set",
-      image: "/clothing/SM/kelly.png",
-      price: 890,
-      category: "Sets",
-      variants: {
-        colors: [
-          { name: "Blue", code: "#9fc5e8", image: "/clothing/SM/kelly.png" },
-        ],
-        sizes: ["Free Size"] 
-      },
-      collection: "Summer Mood",
-    },
-    {
       name: "Tiara Dress",
       image: "/clothing/SM/tiaraGreen.jpg",
       additionalImages: ["/clothing/SM/tiara1.jpg", "/clothing/SM/tiara2.jpg"],
@@ -434,6 +425,7 @@ export type Product = {
       name: "Selina Skirt",
       image: "/clothing/gigi/selinaPearl3.jpg",
       price: 1490,
+      priceUSD: 50,
       category: "Bottoms",
       subcategory: "Skirts",
       variants: {
@@ -466,6 +458,7 @@ export type Product = {
       image: "/clothing/gigi/celine1.jpg",
       additionalImages: ["/clothing/gigi/celine2.jpg", "/clothing/gigi/celine3.jpg"],
       price: 890,
+      priceUSD: 30,
       category: "Bottoms",
       subcategory: "Shorts",
       variants: {
@@ -478,6 +471,7 @@ export type Product = {
       image: "/clothing/gigi/jolin1.jpg",
       additionalImages: ["/clothing/gigi/jolin2.jpg", "/clothing/gigi/jolin3.jpg"],
       price: 690,
+      priceUSD: 25,
       category: "Bottoms",
       subcategory: "Shorts",
       variants: {
@@ -490,6 +484,7 @@ export type Product = {
       image: "/clothing/gigi/maisei1.jpg",
       additionalImages: ["/clothing/gigi/maisei2.jpg", "/clothing/gigi/maisei3.jpg"],
       price: 790,
+      priceUSD: 25,
       category: "Tops",
       subcategory: "Tank Tops",
       variants: {
@@ -502,6 +497,7 @@ export type Product = {
       image: "/clothing/gigi/cherry.jpg",
         additionalImages: ["/clothing/gigi/charcoal.jpg", "/clothing/gigi/cafe2.jpg"],
       price: 1490,
+      priceUSD: 50,
       category: "Tops",
       subcategory: "Cardigans | Sweaters",
       variants: {
@@ -553,6 +549,7 @@ export type Product = {
       image: "/clothing/gigi/vestBlack.jpg",
         additionalImages: ["/clothing/gigi/vestWhite.jpg"],
       price: 1390,
+      priceUSD: 45,
       category: "Tops",
       subcategory: "Shirts & Blouses",
       variants: {
@@ -576,6 +573,7 @@ export type Product = {
       image: "/clothing/gigi/tank.jpg",
         additionalImages: ["/clothing/gigi/tank1.jpg", "/clothing/gigi/tank2.jpg"],
       price: 790,
+      priceUSD: 25,
       category: "Tops",
       subcategory: "Tank Top",
       variants: {
@@ -587,6 +585,7 @@ export type Product = {
       name: "Twilight Skirt",
       image: "/clothing/gigi/silverGray.jpg",
       price: 1590,
+      priceUSD: 50,
       category: "Bottoms",
       subcategory: "Skirts",
       variants: {

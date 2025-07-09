@@ -6,8 +6,8 @@ export type Currency = 'THB' | 'USD' | 'SGD';
 // Currency conversion rates (relative to THB)
 export const CURRENCY_RATES: Record<Currency, number> = {
   THB: 1,
-  USD: 0.029, // 1 THB = 0.029 USD (approx)
-  SGD: 0.039, // 1 THB = 0.039 SGD (approx)
+  USD: 0.0307, // 1 THB = 0.0307 USD (current rate: 1 USD = 32.6 THB)
+  SGD: 0.0413, // 1 THB = 0.0413 SGD (approx)
 };
 
 // Define currency symbols
@@ -21,7 +21,7 @@ export const CURRENCY_SYMBOLS: Record<Currency, string> = {
 type CurrencyContextType = {
   currency: Currency;
   setCurrency: (currency: Currency) => void;
-  formatPrice: (priceInTHB: number) => string;
+  formatPrice: (priceInTHB: number, customUSD?: number, customSGD?: number) => string;
 };
 
 // Create the currency context
@@ -32,18 +32,29 @@ export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [currency, setCurrency] = useState<Currency>('THB');
 
   // Format price based on selected currency
-  const formatPrice = (priceInTHB: number): string => {
-    const rate = CURRENCY_RATES[currency];
-    const convertedPrice = priceInTHB * rate;
-    
-    // Use the correct currency symbol based on selected currency
+  const formatPrice = (priceInTHB: number, customUSD?: number, customSGD?: number): string => {
     const symbol = CURRENCY_SYMBOLS[currency];
     
-    return `${symbol}${convertedPrice.toLocaleString(
+    let price: number;
+    
+    switch (currency) {
+      case 'USD':
+        // Use custom USD price if provided, otherwise convert
+        price = customUSD || (priceInTHB * CURRENCY_RATES.USD);
+        break;
+      case 'SGD':
+        // Use custom SGD price if provided, otherwise convert
+        price = customSGD || (priceInTHB * CURRENCY_RATES.SGD);
+        break;
+      default:
+        price = priceInTHB;
+    }
+    
+    return `${symbol}${price.toLocaleString(
       currency === 'THB' ? 'th-TH' : 'en-US',
       { 
-        minimumFractionDigits: currency === 'THB' ? 0 : 2, 
-        maximumFractionDigits: currency === 'THB' ? 0 : 2 
+        minimumFractionDigits: currency === 'THB' ? 0 : 0, // No decimals for cleaner look
+        maximumFractionDigits: currency === 'THB' ? 0 : 0 
       }
     )}`;
   };
