@@ -4,6 +4,7 @@ import CollectionGrid from "../components/CollectionGrid";
 import ProductScroller from "../components/ProductScroller";
 import TaupeOnYouPreview from "../components/TaupeOnYouPreview";
 import FeaturedCategories from "../components/FeaturedCategories";
+import AboutIntro from "../components/AboutIntro"; // Add this import
 import { products } from "../data/products";
 
 const Home: React.FC = () => {
@@ -218,6 +219,7 @@ const Home: React.FC = () => {
       <div>
         <CollectionGrid collections={collectionSet1} />
         <FeaturedCategories />
+        <AboutIntro /> {/* Add this line */}
       </div>
 
       {/* Full-width second collection grid */}

@@ -36,8 +36,8 @@ const FeaturedCategories: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-light mb-4">Find Your Everyday Essentials</h2>
-          <p className="text-gray-600 text-lg">Explore each main category</p>
+          <h2 className="text-3xl md:text-4xl font-light mb-4">Explore Our Categories?</h2>
+          {/*<p className="text-gray-600 text-lg">Explore each main category</p> */}
         </div>
 
         {/* Category Grid */}
