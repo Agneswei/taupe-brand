@@ -70,7 +70,7 @@ const bestsellers = products.filter(p =>
             <h1 className="text-5xl font-bold mb-4">Gigi's Favorite Collection - Effortless Elegance for Every Day</h1>
             <h2 className="text-3xl font-light mb-6">Mid Year Drop</h2>
             <Link
-              to="/clothing?collection=Bare%20Essentials"
+              to="/clothing?collection=Gigi%27s+Favorite+Collection"
               className="mt-2 inline-block border border-white px-6 py-2 text-white hover:bg-white hover:text-black transition"
             >
               Shop The Collection
