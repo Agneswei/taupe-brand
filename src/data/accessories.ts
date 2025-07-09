@@ -8,6 +8,10 @@ export type Accessory = {
   soldOut?: boolean;
   category: string;
   subcategory?: string;
+  description?: string;
+  fabric?: string;
+  sizesInfo?: string;
+  careInstructions?: string[];
   variants?: {
     colors?: { name: string; code: string; image: string }[];
     sizes?: string[];
@@ -36,6 +40,10 @@ const rawAccessories = [
     price: 1790,
     priceUSD: 60, 
     category: "Bags", 
+    description: "Minimalist faux suede bag, compact yet spacious for essentials. Microsuede material, inner zip pocket, adjustable strap, and secure snap closure.",
+    fabric: "Microsuede",
+    sizesInfo: "Width 24 cm x Length 20 cm x Height 9 cm (9.5” x 8” x 3.5”)",
+    careInstructions: ["ipe clean with a damp cloth. Avoid excessive moisture."],
     variants: {
       colors: [
         { name: "Beige", code: "#e0d7bf", image: "/clothing/bags/nomadBeige.png", 

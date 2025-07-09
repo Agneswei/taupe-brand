@@ -9,7 +9,7 @@
             <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-                backgroundImage: `url('/about/about-intro-bg.jpg')` // Replace with your image path
+                backgroundImage: `url('/aboutIntro.jpg')` // Replace with your image path
             }}
             >
             {/* Overlay for better text readability */}

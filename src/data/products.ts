@@ -121,6 +121,10 @@ export type Product = {
       priceUSD: 55,
       category: "Bottoms",
       subcategory: "Pants",
+      description: "Wide-leg tailored trousers with included belt. Lightweight suit fabric that resists wrinkles with elegant front pleats for a structured silhouette.",
+      fabric: "Cotton blended suit fabric",
+      sizesInfo: "S: Waist 24”-25” | Hips 36”-37” | Length 39”; M: Waist 26”-27” | Hips 38”-39” | Length 40”; L: Waist 28”-29” | Hips 40”-41” | Length 41”",
+      careInstructions: ["Dry clean or gentle hand wash recommended. Do not tumble dry."],
       collection: "Bare Essentials",
     },
     {
@@ -130,6 +134,10 @@ export type Product = {
       priceUSD: 45,
       category: "Bottoms",
       subcategory: "Pants",
+      description: "Mid-straight leg trousers with front zipper, crafted from premium Korean fabric with subtle woven texture. Soft, thick, and stretchy for a luxurious feel.",
+      fabric: "Cotton blended fabric",
+      sizesInfo: "S: Waist 25”-26” | Hips 35”-36” | Length 42”; M: Waist 27”-28” | Hips 37”-38” | Length 42”; L: Waist 29”-30” | Hips 39”-40” | Length 42”",
+      careInstructions: ["Machine wash cold. Gentle cycle. Hang to dry."],
       collection: "Bare Essentials",
     },
     {
@@ -371,7 +379,11 @@ export type Product = {
       image: "/clothing/BE/selinaKhaki.png",
       price: 1290,
       category: "Bottoms",
-      subcategory: "Skirts",      
+      subcategory: "Skirts",  
+      description: "High-waisted skort with included belt. Quality fabric with inner lining for comfort and structure. Suitable for work or casual styling.",
+      fabric: "Cotton Blend with fabric lining",
+      sizesInfo: "S: Waist 25” | Hips 33”-34” | Length 15”; M: Waist 27” | Hips 35”-36” | Length 16”; L: Waist 29” | Hips 37”-38” | Length 17”",
+      careInstructions: ["Hand wash cold. Do not bleach"],   
       variants: {
         colors: [
           { name: "Kahki", code: "#958258", image: "/clothing/BE/selinaKhaki.png" },
@@ -432,6 +444,10 @@ export type Product = {
       priceUSD: 50,
       category: "Bottoms",
       subcategory: "Skirts",
+      description: "Premium-weight satin skirt with a beautiful drape, side zipper, and inner elastic waistband. Easy to style for work or casual days.",
+      fabric: "Satin",
+      sizesInfo: "S: Waist 24”-25” | Hips 38” | Length 40”; M: Waist 26”-27” | Hips 40” | Length 40”",
+      careInstructions: ["Hand wash cold. Do not bleach. Hang to dry."],
       variants: {
         colors: [
           { name: "Pearl", code: "#f8f2ec", image: "/clothing/gigi/selinaPearl.jpg",
@@ -465,6 +481,10 @@ export type Product = {
       priceUSD: 30,
       category: "Bottoms",
       subcategory: "Shorts",
+      description: "Must-have high-waisted shorts with perfect length. Premium Kenny fabric – thick, structured, durable, with folded hems for a polished finish.",
+      fabric: "Premium Kenny",
+      sizesInfo: "S: Waist 24”-25” | Hips 35”-36” | Length 15”; M: Waist 26”-27” | Hips 37”-38” | Length 15”; L: Waist 28”-29” | Hips 39”-40” | Length 16”; XL: Waist 30”-31” | Hips 41”-42” | Length 16”",
+      careInstructions: ["Machine wash cold. Gentle cycle. Tumble dry low or hang to dry."],
       variants: {
         sizes: ["S", "M", "L", "XL"] 
       },
@@ -478,6 +498,10 @@ export type Product = {
       priceUSD: 25,
       category: "Bottoms",
       subcategory: "Shorts",
+      description: "New linen shorts with flattering cut and perfect length. Easy to style with bikinis, shirts, or cropped tanks.",
+      fabric: "Linen",
+      sizesInfo: "S: Waist 24”-25” | Hips 34” | Length 16”; M: Waist 26”-27” | Hips 36” | Length 16”; L: Waist 28”-29” | Hips 38” | Length 17”",
+      careInstructions: ["Hand wash cold. Do not bleach. Line dry."],
       variants: {
         sizes: ["S", "M", "L"] 
       },
@@ -491,6 +515,10 @@ export type Product = {
       priceUSD: 25,
       category: "Tops",
       subcategory: "Tank Tops",
+      description: "Soft knit tank top with straight-line pattern for a slimming effect. Comfortable and easy to style with any outfit.",
+      fabric: "Knit",
+      sizesInfo: "Free size – Bust 30”-36”",
+      careInstructions: ["Hand wash cold. Do not bleach. Lay flat to dry."],
       variants: {
         sizes: ["Freesize"] 
       },
@@ -504,6 +532,10 @@ export type Product = {
       priceUSD: 50,
       category: "Tops",
       subcategory: "Cardigans | Sweaters",
+      description: "A Korean-style short-sleeve cardigan that gives an effortlessly polished look. Medium-thick soft knit fabric with elegant gold buttons. Wear it buttoned up or open for versatile styling.",
+      fabric: "Soft Knit",
+      sizesInfo: "Free size ; Neck width: 6” (15.5 cm), Bust before stretch: 38” (97 cm), Sleeve width: 4.5” (11 cm), Length: 22”",
+      careInstructions: ["Hand wash cold. Do not bleach. Lay flat to dry."],
       variants: {
         colors: [
           { name: "Almond Milk", code: "#f8f2ec", image: "/clothing/gigi/almond.jpg",
@@ -543,6 +575,10 @@ export type Product = {
       price: 990,
       category: "Bottoms",
       subcategory: "Skirts",
+      description: "Tiered long cotton skirt with elastic back waistband and hidden side zipper. Easy to match for a refined Taupe look.",
+      fabric: "Cotton",
+      sizesInfo: "Free size – Waist 25”-32”, Hips 32”-40”, Length 37” (Unlined)",
+      careInstructions: ["Machine wash cold with like colors. Tumble dry low or line dry."],
       variants: {
         sizes: ["Free Size"] 
       },
@@ -556,6 +592,10 @@ export type Product = {
       priceUSD: 45,
       category: "Tops",
       subcategory: "Shirts & Blouses",
+      description: "Long V-neck Korean-style knit vest with elegant gold buttons and adjustable back buckle. Lightweight, soft, and easy to style for work or outings.",
+      fabric: "Soft Knit",
+      sizesInfo: "Free size – Neck depth: 8” (20.5 cm), Bust before stretch: 28” (36 cm) (Recommended under 32”), Armhole width: 9” (23 cm) stretchable 1-3”, Length: 23.5”",
+      careInstructions: ["Hand wash cold. Do not bleach. Lay flat to dry."],
       variants: {
         colors: [
           { name: "Black", code: "#000000", image: "/clothing/gigi/vestBlack.jpg",
