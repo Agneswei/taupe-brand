@@ -10,6 +10,10 @@ export type Product = {
     priceSGD?: number; 
     category: string;
     subcategory?: string;
+    description?: string;
+    fabric?: string;
+    sizesInfo?: string;
+    careInstructions?: string[];
     variants?: {
       colors?: { name: string; code: string; image: string; additionalImages?: string[]; }[];
       sizes?: string[];
@@ -588,6 +592,10 @@ export type Product = {
       priceUSD: 50,
       category: "Bottoms",
       subcategory: "Skirts",
+      description: "Premium thick satin skirt with glossy finish. Flat waistband with hidden elastic, side zipper, and lightweight flared hem for a graceful look.",
+      fabric: "Satin",
+      sizesInfo: "S: Waist 25”-26” | Hips 36”-38” | Length 36”; M: Waist 27”-28” | Hips 38”-40” | Length 36”",
+      careInstructions: ["Hand wash cold. Do not bleach. Hang to dry."],
       variants: {
         colors: [
            { name: "Frost White", code: "#ffffff", image: "/clothing/gigi/frostWhite.jpg",

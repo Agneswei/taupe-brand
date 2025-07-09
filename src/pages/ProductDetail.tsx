@@ -24,6 +24,10 @@ type ExtendedProduct = {
   price: number;
   category: string;
   subcategory?: string;
+   description?: string;       
+  fabric?: string;          
+  sizesInfo?: string;        
+  careInstructions?: string[];
   variants?: ProductVariant;
   additionalImages?: string[];
 };
@@ -494,6 +498,7 @@ const ProductDetail: React.FC = () => {
             </button>
           )}
 
+
           {/* Product Details Accordion */}
           <div className="border-t border-gray-200 pt-4">
             <details className="group">
@@ -505,18 +510,70 @@ const ProductDetail: React.FC = () => {
                   </svg>
                 </span>
               </summary>
-              <div className="text-sm text-gray-600 pb-4">
-                <p>This {product.subcategory || product.category.toLowerCase()} features premium quality and comfort.</p>
-                <ul className="list-disc pl-5 mt-2 space-y-1">
-                  <li>Premium materials</li>
-                  <li>Designed for everyday comfort</li>
-                  <li>Versatile styling options</li>
-                  <li>Machine washable</li>
-                </ul>
+              <div className="text-sm text-gray-600 pb-4 space-y-4">
+                {/* Product Description */}
+                {product.description && (
+                  <div>
+                    <p className="leading-relaxed">{product.description}</p>
+                  </div>
+                )}
+
+                {/* Fabric Information */}
+                {product.fabric && (
+                  <div>
+                    <h4 className="font-medium text-gray-800 mb-1">Fabric:</h4>
+                    <p>{product.fabric}</p>
+                  </div>
+                )}
               </div>
             </details>
           </div>
 
+          {/* Size & Fit Accordion */}
+          <div className="border-t border-gray-200 pt-4">
+            <details className="group">
+              <summary className="flex justify-between items-center cursor-pointer py-2">
+                <span className="font-medium">Size & Fit</span>
+                <span className="transition group-open:rotate-180">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+              </summary>
+              <div className="text-sm text-gray-600 pb-4">
+                {/* Sizes Information */}
+                {product.sizesInfo && (
+                  <p className="leading-relaxed">{product.sizesInfo}</p>
+                )}
+              </div>
+            </details>
+          </div>
+
+          {/* Care Instructions Accordion */}
+          <div className="border-t border-gray-200 pt-4">
+            <details className="group">
+              <summary className="flex justify-between items-center cursor-pointer py-2">
+                <span className="font-medium">Care Instructions</span>
+                <span className="transition group-open:rotate-180">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+              </summary>
+              <div className="text-sm text-gray-600 pb-4">
+                {/* Care Instructions */}
+                {product.careInstructions && product.careInstructions.length > 0 && (
+                  <ul className="list-disc pl-5 space-y-1">
+                    {product.careInstructions.map((instruction, index) => (
+                      <li key={index}>{instruction}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </details>
+          </div>
+
+          {/* Shipping & Returns Accordion */}
           <div className="border-t border-gray-200 pt-4">
             <details className="group">
               <summary className="flex justify-between items-center cursor-pointer py-2">
